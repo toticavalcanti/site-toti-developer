@@ -1,0 +1,109 @@
+{
+  "nav": {
+    "home": "Home",
+    "work": "Work",
+    "services": "Services",
+    "process": "Process",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Available for new projects",
+    "title": "Sales Machines built with ",
+    "title_accent": "Next.js & AI",
+    "subtitle": "I don't just build websites. I develop high-performance systems designed to convert leads into real profit.",
+    "cta_primary": "Secure my spot",
+    "cta_secondary": "View Cases"
+  },
+  "stats": {
+    "leads": "Leads Generated",
+    "projects": "Projects Delivered",
+    "performance": "PageSpeed Score",
+    "countries": "Countries Served"
+  },
+  "services": {
+    "title": "Specialized Services",
+    "subtitle": "Technical solutions designed to attract clients and optimize operations.",
+    "lp_title": "Product Landing Pages",
+    "lp_desc": "High-conversion pages optimized for scale.",
+    "store_title": "E-commerce Lite",
+    "store_desc": "Fast stores integrated with WhatsApp Sales Flow.",
+    "automation_title": "Automation & AI",
+    "automation_desc": "Smart agents qualifying leads 24/7.",
+    "custom_title": "Custom Systems",
+    "custom_desc": "Robust bespoke solutions in Next.js."
+  },
+  "work": {
+    "title": "Success Stories",
+    "subtitle": "Projects that deliver real value and extreme performance.",
+    "production": "In Production",
+    "preview": "Preview / Launching",
+    "functional": "Functional / MVP",
+    "demo": "Demo / Concept"
+  },
+  "about": {
+    "title_prefix": "Specialist in ",
+    "title_accent": "Digital Solutions",
+    "bio": "Software Engineer focused on building applications that solve real-world problems. Specialist in Next.js and intelligent automations, I help small businesses scale their digital presence with simplicity and performance.",
+    "robust_systems": "Robust Systems",
+    "ui_ux": "Focused UI/UX",
+    "performance": "Performance",
+    "point0": "Full-stack development with the most modern technologies on the market.",
+    "point1": "Total focus on user experience and conversion rates.",
+    "point2": "Clean, scalable, and easy-to-maintain code."
+  },
+  "process": {
+    "title": "How I Work",
+    "subtitle": "A transparent flow focused on agility and technical quality.",
+    "step1_title": "Diagnosis",
+    "step1_desc": "Deep analysis of your problem and business goals.",
+    "step2_title": "Estratégia",
+    "step2_desc": "Defining the ideal stack and architecture for the project.",
+    "step3_title": "Execution",
+    "step3_desc": "Agile development with incremental deliveries.",
+    "step4_title": "Scale",
+    "step4_desc": "Continuous optimization for performance and conversion."
+  },
+  "packages": {
+    "title": "Corporate Solutions",
+    "subtitle": "Delivery formats designed for scale and efficiency.",
+    "lp_name": "Pro Landing Page",
+    "lp_desc": "Total focus on single product/service conversion.",
+    "store_name": "E-commerce Lite",
+    "store_desc": "Your modern online store without fixed monthly fees.",
+    "custom_name": "Custom System",
+    "custom_desc": "Specific systems built with Next.js.",
+    "price_on_request": "On request",
+    "popular": "Popular",
+    "features": {
+      "lp": ["Custom UI/UX", "Conversion Optimization", "Responsive Design (Mobile First)", "Basic SEO", "WhatsApp Integration"],
+      "store": ["Manageable Catalog", "WhatsApp Flow Checkout", "Fast Product Pages", "Optional Bilingual Design", "High Performance Hosting"],
+      "custom": ["Bespoke Architecture", "API Integration", "Admin Dashboard", "Bank-grade Security", "Guaranteed Scalability"]
+    }
+  },
+  "cta": {
+    "title": "Ready to scale your operation?",
+    "subtitle": "Let's build the solution your business needs today.",
+    "button": "Talk to Specialist"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Reach out to me now to clear any doubts or request a quote.",
+    "form": {
+      "name": "Name",
+      "whatsapp": "WhatsApp",
+      "project_type": "Project Type",
+      "select": "Select...",
+      "message": "Message",
+      "how_can_help": "How can I help you?",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "✓ Message sent successfully!",
+      "error": "Error sending. Try WhatsApp below.",
+      "or": "Or if you prefer",
+      "chat_wa": "Chat on WhatsApp"
+    }
+  },
+  "footer": {
+    "bio": "Software Engineering, Next.js Development and Smart Automations. Focusing on practical results for small businesses."
+  }
+}

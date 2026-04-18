@@ -1,131 +1,130 @@
 'use client';
 
-import { useState } from 'react';
 import Container from './Container';
 import Button from './Button';
 import { motion } from 'framer-motion';
-import { MessageCircle, Play } from 'lucide-react';
-import Link from 'next/link';
+import { MessageCircle, ArrowRight, MousePointer2 } from 'lucide-react';
+import { Link } from '@/i18n/routing';
 import { aboutInfo } from '@/mockData';
+import { useTranslations } from 'next-intl';
 
 export default function HeroSection() {
-  const [showVideo, setShowVideo] = useState(false);
-
+  const t = useTranslations('hero');
   const whatsappUrl = `https://wa.me/${aboutInfo.whatsapp.replace(/\D/g, '')}?text=Olá! Vim pelo site e gostaria de um orçamento.`;
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.21, 0.45, 0.32, 0.9] },
+    },
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-background/50 to-background -z-10" />
+    <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden pt-20">
+      {/* Dynamic Background Elements */}
+      <div className="absolute top-0 right-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[150px] -z-10 rounded-full animate-pulse-slow" />
+      <div className="absolute bottom-0 left-[-10%] w-[40%] h-[40%] bg-secondary/15 blur-[120px] -z-10 rounded-full animate-pulse-slow-reverse" />
 
       <Container>
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-block mb-3 sm:mb-4 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 border border-primary/20"
-            >
-              <span className="text-xs sm:text-sm font-medium text-primary">
-                Software Engineering
-              </span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-5 md:mb-6 leading-tight"
-            >
-              Desenvolvimento de software{' '}
-              <span className="gradient-text">e sistemas</span>
-              {' '}com inteligência artificial aplicada.
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="text-base sm:text-lg md:text-xl text-foreground-secondary mb-6 sm:mb-7 md:mb-8 max-w-2xl leading-relaxed"
-            >
-              Ciência da Computação como base para a criação de sistemas, automações e projetos digitais, visuais e audiovisuais.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-              className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
-            >
-              <Button size="md" asChild>
-                <Link href={whatsappUrl} target="_blank">
-                  <MessageCircle size={20} className="mr-2" /> Falar no WhatsApp
-                </Link>
-              </Button>
-              <Button size="md" variant="outline" asChild>
-                <Link href="/portfolio">
-                  Ver Portfólio
-                </Link>
-              </Button>
-            </motion.div>
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="max-w-4xl mx-auto text-center relative"
+        >
+          {/* Badge */}
+          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-8 px-5 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-md">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            </span>
+            <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-primary">
+              {t('badge')}
+            </span>
           </motion.div>
 
-          {/* Video Placeholder */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="relative"
+          {/* Title */}
+          <motion.h1
+            variants={itemVariants}
+            className="text-5xl sm:text-7xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tighter"
           >
-            <div className="aspect-video rounded-2xl overflow-hidden bg-background-secondary border border-border glow-border group">
-              {!showVideo ? (
-                <button
-                  onClick={() => setShowVideo(true)}
-                  className="block w-full h-full relative focus:outline-none focus:ring-2 focus:ring-primary"
-                >
-                  <img 
-                    src="https://i.ytimg.com/vi/rhDKFzZJKZw/maxresdefault.jpg"
-                    alt="Vídeo de apresentação"
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black/15 group-hover:bg-black/25 transition-colors" />
-                  <div className="absolute inset-0 w-full h-full flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:from-primary/50 group-hover:to-secondary/50 transition-all cursor-pointer shadow-2xl backdrop-blur-sm">
-                        <Play size={32} className="text-white ml-1 drop-shadow-lg" />
-                      </div>
-                      <p className="text-white font-semibold mb-1 drop-shadow-lg">
-                        Vídeo criado com avatar digital com IA
-                      </p>
-                      <p className="text-white/90 text-sm drop-shadow-lg">
-                        Método, Experiência e Resultados
-                      </p>
-                    </div>
-                  </div>
-                </button>
-              ) : (
-                <iframe
-                  src="https://www.youtube.com/embed/rhDKFzZJKZw?autoplay=1&rel=0"
-                  title="Vídeo de apresentação"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="w-full h-full"
-                />
-              )}
+            {t('title')} <br />
+            <span className="gradient-text drop-shadow-[0_10px_10px_rgba(var(--primary-rgb),0.2)]">
+              {t('title_accent')}
+            </span>
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            variants={itemVariants}
+            className="text-lg sm:text-2xl text-foreground-secondary mb-12 max-w-2xl mx-auto leading-relaxed font-medium"
+          >
+            {t('subtitle')}
+          </motion.p>
+
+          {/* Actions */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row items-center justify-center gap-5"
+          >
+            <Button size="lg" asChild className="w-full sm:w-auto h-16 px-10 rounded-2xl shadow-2xl shadow-primary/30 text-lg font-black group">
+              <Link href={whatsappUrl as any} target="_blank">
+                <MessageCircle size={22} className="mr-3 group-hover:scale-125 transition-transform" /> 
+                {t('cta_primary')}
+              </Link>
+            </Button>
+            <Button size="lg" variant="secondary" asChild className="w-full sm:w-auto h-16 px-10 rounded-2xl border-border bg-background/50 backdrop-blur-md text-lg font-black group">
+              <Link href="/cases">
+                {t('cta_secondary')} 
+                <ArrowRight size={22} className="ml-3 group-hover:translate-x-2 transition-transform" />
+              </Link>
+            </Button>
+          </motion.div>
+
+          {/* Footer Hero */}
+          <motion.div
+            variants={itemVariants}
+            className="mt-20 pt-10 border-t border-border/30"
+          >
+            <div className="flex flex-col items-center gap-6">
+              <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-foreground-muted">
+                <MousePointer2 size={12} />
+                Focus Tech Stack
+              </div>
+              <div className="flex flex-wrap justify-center gap-8 sm:gap-16 grayscale opacity-40 hover:opacity-100 hover:grayscale-0 transition-all duration-700">
+                <span className="text-2xl font-black tracking-tighter">NEXT.JS</span>
+                <span className="text-2xl font-black tracking-tighter">TYPESCRIPT</span>
+                <span className="text-2xl font-black tracking-tighter">TAILWIND</span>
+                <span className="text-2xl font-black tracking-tighter">AI AGENTS</span>
+                <span className="text-2xl font-black tracking-tighter">Vercel</span>
+              </div>
             </div>
-
-            {/* Floating Elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-2xl opacity-20 blur-2xl animate-pulse-glow" />
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-secondary to-primary rounded-2xl opacity-20 blur-2xl animate-pulse-glow" />
           </motion.div>
-        </div>
+        </motion.div>
       </Container>
+      
+      {/* Scroll indicator - added for more life */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block"
+      >
+        <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent animate-bounce-slow" />
+      </motion.div>
     </section>
   );
 }

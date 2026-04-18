@@ -185,10 +185,12 @@ export interface Book {
 }
 
 // Case Type (for work showcase)
-export type CasePillar = 'ia-automacao' | 'sites-sistemas' | 'audiovisual-musica';
+export type CasePillar = 'ia-automacao' | 'sites-sistemas';
 
 export interface Case {
+  id: string;
   slug: string;
+  featured: boolean;
   name: string;
   description: string;
   tags: string[];
@@ -199,4 +201,5 @@ export interface Case {
   stack: string;
   ctaText: string;
   pillar: CasePillar;
+  status: 'production' | 'preview' | 'functional' | 'demo';
 }

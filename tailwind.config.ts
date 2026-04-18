@@ -10,32 +10,32 @@ const config: Config = {
     extend: {
       colors: {
         background: {
-          DEFAULT: '#050509',
-          secondary: '#0a0a0f',
-          tertiary: '#12121a',
+          DEFAULT: '#020617',
+          secondary: '#0f172a',
+          tertiary: '#1e293b',
         },
         foreground: {
-          DEFAULT: '#e4e4e7',
-          secondary: '#a1a1aa',
-          muted: '#71717a',
+          DEFAULT: '#f8fafc',
+          secondary: '#94a3b8',
+          muted: '#64748b',
         },
         primary: {
-          DEFAULT: '#a855f7',
-          dark: '#7c3aed',
-          light: '#c084fc',
+          DEFAULT: '#0d9488', // Teal 600
+          dark: '#0f766e',
+          light: '#2dd4bf',
         },
         secondary: {
-          DEFAULT: '#06b6d4',
-          dark: '#0891b2',
-          light: '#22d3ee',
+          DEFAULT: '#2563eb', // Blue 600
+          dark: '#1e40af',
+          light: '#60a5fa',
         },
-        accent: '#f97316',
+        accent: '#0ea5e9', // Sky 500
         success: '#10b981',
         warning: '#f59e0b',
         error: '#ef4444',
         border: {
-          DEFAULT: '#27272a',
-          light: '#3f3f46',
+          DEFAULT: '#1e293b',
+          light: '#334155',
         },
       },
       fontFamily: {

@@ -3,77 +3,90 @@
 import Container from './Container';
 import SectionTitle from './SectionTitle';
 import Button from './Button';
-import { Sparkles, Code2, Music, ArrowRight } from 'lucide-react';
+import { Layout, ShoppingCart, MessageSquare, Code2, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-
-const portals = [
-  {
-    id: 'ia-automacao',
-    title: 'IA & Automação',
-    description: 'WhatsApp IA, chatbots, automações e integrações que trabalham 24h por você.',
-    icon: Sparkles,
-    href: '/cases?p=ia-automacao',
-    cta: 'Ver soluções de IA',
-    gradient: 'from-primary to-secondary',
-  },
-  {
-    id: 'sites-sistemas',
-    title: 'Sites & Sistemas',
-    description: 'Sites que convertem, landing pages, e-commerce e sistemas sob medida.',
-    icon: Code2,
-    href: '/cases?p=sites-sistemas',
-    cta: 'Ver projetos web',
-    gradient: 'from-secondary to-accent',
-  },
-  {
-    id: 'audiovisual-musica',
-    title: 'Audiovisual & Música',
-    description: 'Videoclipes com IA, produção musical, arranjos e avatares virtuais.',
-    icon: Music,
-    href: '/cases?p=audiovisual-musica',
-    cta: 'Ver trabalhos',
-    gradient: 'from-accent to-primary',
-  },
-];
+import { Link } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 
 export default function ServicesOverview() {
+  const t = useTranslations('services');
+
+  const services = [
+    {
+      id: 'landing-pages',
+      title: t('lp_title'),
+      description: t('lp_desc'),
+      icon: Layout,
+      href: '/services#landing-pages',
+      cta: 'Details',
+      gradient: 'from-primary to-primary-light',
+    },
+    {
+      id: 'ecommerce',
+      title: t('store_title'),
+      description: t('store_desc'),
+      icon: ShoppingCart,
+      href: '/services#ecommerce',
+      cta: 'Details',
+      gradient: 'from-secondary to-secondary-light',
+    },
+    {
+      id: 'automation',
+      title: t('automation_title'),
+      description: t('automation_desc'),
+      icon: MessageSquare,
+      href: '/services#automation',
+      cta: 'Details',
+      gradient: 'from-emerald-500 to-teal-400',
+    },
+    {
+      id: 'custom',
+      title: t('custom_title'),
+      description: t('custom_desc'),
+      icon: Code2,
+      href: '/services#custom',
+      cta: 'Details',
+      gradient: 'from-blue-600 to-indigo-500',
+    },
+  ];
+
   return (
-    <section className="py-12 sm:py-16 relative">
+    <section className="py-32 bg-background-secondary/30 relative">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--primary-dark)_0%,transparent_70%)] opacity-[0.03] -z-10" />
+      
       <Container>
         <SectionTitle
-          title="Escolha seu Objetivo"
-          subtitle="Três caminhos para transformar seu negócio ou projeto"
+          title={t('title')}
+          subtitle={t('subtitle')}
           centered
           className="mx-auto"
         />
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mt-10">
-          {portals.map((portal, index) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+          {services.map((service, index) => (
             <motion.div
-              key={portal.id}
-              initial={{ opacity: 0, y: 40 }}
+              key={service.id}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.15, duration: 0.6 }}
+              transition={{ delay: index * 0.1, duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="group relative"
+              className="group h-full"
             >
-              <div className="h-full p-8 rounded-2xl bg-background-secondary border border-border hover:border-primary/50 transition-all hover:shadow-xl hover:shadow-primary/10 flex flex-col">
-                {/* Icon */}
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${portal.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                  <portal.icon size={28} className="text-white" />
+              <div className="h-full p-10 rounded-[2.5rem] bg-background border border-border hover:border-primary/50 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] hover:-translate-y-2 flex flex-col relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-transparent rounded-bl-[100px] -z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform shadow-xl shadow-black/20`}>
+                  <service.icon size={30} className="text-white" />
                 </div>
 
-                {/* Content */}
-                <h3 className="text-xl font-bold mb-3">{portal.title}</h3>
-                <p className="text-foreground-secondary mb-6 leading-relaxed flex-grow">
-                  {portal.description}
+                <h3 className="text-2xl font-black mb-4 tracking-tight">{service.title}</h3>
+                <p className="text-foreground-secondary text-base mb-8 leading-relaxed flex-grow font-medium">
+                  {service.description}
                 </p>
 
-                {/* CTA - always at bottom */}
-                <Button asChild variant="outline" size="sm" className="group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all mt-auto">
-                  <Link href={portal.href}>
-                    {portal.cta} <ArrowRight size={16} className="ml-2" />
+                <Button asChild variant="secondary" size="sm" className="w-full h-12 font-black group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all mt-auto border-border bg-background-tertiary shadow-lg">
+                  <Link href={service.href as any}>
+                    {service.cta} <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
               </div>

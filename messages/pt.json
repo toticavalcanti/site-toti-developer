@@ -1,0 +1,109 @@
+{
+  "nav": {
+    "home": "Início",
+    "work": "Cases",
+    "services": "Serviços",
+    "process": "Processo",
+    "contact": "Contato"
+  },
+  "hero": {
+    "badge": "Disponível para novos projetos",
+    "title": "Máquinas de Vendas em ",
+    "title_accent": "Next.js & IA",
+    "subtitle": "Não construo apenas sites. Desenvolvo sistemas de alta performance focados em converter leads em lucro real.",
+    "cta_primary": "Garantir minha vaga",
+    "cta_secondary": "Ver Cases"
+  },
+  "stats": {
+    "leads": "Leads Gerados",
+    "projects": "Projetos Entregues",
+    "performance": "PageSpeed Score",
+    "countries": "Países Atendidos"
+  },
+  "services": {
+    "title": "Serviços Especializados",
+    "subtitle": "Soluções técnicas desenhadas para atrair clientes e otimizar operações.",
+    "lp_title": "Product Landing Pages",
+    "lp_desc": "Páginas de alta conversão otimizadas para escala.",
+    "store_title": "E-commerce Lite",
+    "store_desc": "Lojas rápidas integradas ao WhatsApp Sales Flow.",
+    "automation_title": "Automação & IA",
+    "automation_desc": "Agentes inteligentes qualificando leads 24/7.",
+    "custom_title": "Sistemas Custom",
+    "custom_desc": "Soluções robustas sob medida em Next.js."
+  },
+  "work": {
+    "title": "Cases de Sucesso",
+    "subtitle": "Projetos que entregam valor real e performance extrema.",
+    "production": "Em Produção",
+    "preview": "Preview / Lançamento",
+    "functional": "Funcional / MVP",
+    "demo": "Demo / Conceito"
+  },
+  "about": {
+    "title_prefix": "Especialista em ",
+    "title_accent": "Soluções Digitais",
+    "bio": "Engenheiro de Software com foco em construir aplicações que resolvem problemas reais. Especialista em Next.js e automações inteligentes, ajudo pequenos negócios a escalarem sua presença digital com simplicidade e performance.",
+    "robust_systems": "Sistemas Robustos",
+    "ui_ux": "UI/UX Focado",
+    "performance": "Performance",
+    "point0": "Desenvolvimento full-stack com as tecnologias mais modernas do mercado.",
+    "point1": "Foco total na experiência do usuário e taxas de conversão.",
+    "point2": "Código limpo, escalável e fácil de manter."
+  },
+  "process": {
+    "title": "Como Eu Trabalho",
+    "subtitle": "Um fluxo transparente focado em agilidade e qualidade técnica.",
+    "step1_title": "Diagnóstico",
+    "step1_desc": "Análise profunda do seu problema e objetivos comerciais.",
+    "step2_title": "Estratégia",
+    "step2_desc": "Definição da stack e arquitetura ideal para o projeto.",
+    "step3_title": "Execução",
+    "step3_desc": "Desenvolvimento ágil com entregas incrementais.",
+    "step4_title": "Escala",
+    "step4_desc": "Otimização contínua para performance e conversão."
+  },
+  "packages": {
+    "title": "Soluções Corporativas",
+    "subtitle": "Formatos de entrega pensados para escala e eficiência.",
+    "lp_name": "Landing Page Pro",
+    "lp_desc": "Foco total em conversão de um único produto/serviço.",
+    "store_name": "E-commerce Lite",
+    "store_desc": "Sua loja online moderna sem taxas fixas mensais.",
+    "custom_name": "Custom System",
+    "custom_desc": "Sistemas específicos construídos com Next.js.",
+    "price_on_request": "Sob consulta",
+    "popular": "Popular",
+    "features": {
+      "lp": ["UI/UX Customizado", "Otimização de Conversão", "Design Responsivo (Mobile First)", "SEO Básico", "Integração com WhatsApp"],
+      "store": ["Catálogo Gerenciável", "Checkout WhatsApp Flow", "Páginas de Produto Rápidas", "Design Bilíngue Opcional", "Hospedagem de Alta Performance"],
+      "custom": ["Arquitetura sob medida", "Integração com APIs", "Painel Administrativo", "Segurança Bancária", "Escalabilidade Garantida"]
+    }
+  },
+  "cta": {
+    "title": "Pronto para escalar sua operação?",
+    "subtitle": "Vamos construir a solução que seu negócio precisa hoje.",
+    "button": "Falar com Especialista"
+  },
+  "contact": {
+    "title": "Contato",
+    "subtitle": "Fale comigo agora para tirar suas dúvidas ou solicitar um orçamento.",
+    "form": {
+      "name": "Nome",
+      "whatsapp": "WhatsApp",
+      "project_type": "Tipo de Projeto",
+      "select": "Selecione...",
+      "message": "Mensagem",
+      "how_can_help": "Como posso ajudar?",
+      "send": "Enviar Mensagem",
+      "sending": "Enviando...",
+      "success": "✓ Mensagem enviada com sucesso!",
+      "error": "Erro ao enviar. Tente o WhatsApp abaixo.",
+      "or": "Ou se preferir",
+      "chat_wa": "Conversar pelo WhatsApp"
+    }
+  },
+  "footer": {
+    "bio": "Engenharia de Software, Desenvolvimento Next.js e Automações Inteligentes. Focando em resultados práticos para pequenos negócios."
+  }
+}

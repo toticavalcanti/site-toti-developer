@@ -9,91 +9,62 @@ import Select from './Select';
 import Button from './Button';
 import { Send, AlertCircle, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { aboutInfo } from '@/mockData';
+import { useTranslations } from 'next-intl';
 
 const contactSchema = z.object({
-  name: z.string().min(2, 'Nome deve ter pelo menos 2 caracteres'),
-  whatsapp: z.string().min(10, 'WhatsApp inválido (mínimo 10 dígitos)'),
-  pilar: z.string().min(1, 'Selecione o tipo de projeto'),
-  message: z.string().min(10, 'Mensagem deve ter pelo menos 10 caracteres').max(500, 'Mensagem muito longa (máximo 500 caracteres)'),
-  pocketShowWaitlist: z.boolean().optional(),
+  name: z.string().min(2, 'Min 2 chars'),
+  whatsapp: z.string().min(10, 'Min 10 digits'),
+  pilar: z.string().min(1, 'Required'),
+  message: z.string().min(10, 'Min 10 chars').max(500, 'Max 500 chars'),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
-interface ApiResponse {
-  success: boolean;
-  message: string;
-  whatsappHref?: string;
-  errors?: Record<string, string[]>;
-}
-
-const pilarOptions = [
-  { value: '', label: 'Selecione...' },
-  { value: 'ia-automacao', label: 'IA & Automação' },
-  { value: 'sites-sistemas', label: 'Sites & Sistemas' },
-  { value: 'audiovisual-musica', label: 'Audiovisual & Música' },
-];
-
 export default function ContactForm() {
+  const t = useTranslations('contact.form');
+  const ts = useTranslations('services');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [whatsappFallback, setWhatsappFallback] = useState<string | null>(null);
 
-  const defaultWhatsappUrl = `https://wa.me/${aboutInfo.whatsapp.replace(/\D/g, '')}`;
+  const pilarOptions = [
+    { value: '', label: t('select') },
+    { value: 'landing-pages', label: ts('lp_title') },
+    { value: 'ecommerce', label: ts('store_title') },
+    { value: 'automation', label: ts('automation_title') },
+    { value: 'custom', label: ts('custom_title') },
+  ];
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-    watch,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
   });
 
-  const selectedPilar = watch('pilar');
-  const showPocketShowCheckbox = selectedPilar === 'audiovisual-musica';
-
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     setSubmitError(null);
-    setWhatsappFallback(null);
     
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
 
-      const result: ApiResponse = await response.json();
-
-      if (!result.success) {
-        setSubmitError(result.message || 'Erro ao enviar mensagem. Tente novamente.');
-        // Set WhatsApp fallback if provided by API
-        if (result.whatsappHref) {
-          setWhatsappFallback(result.whatsappHref);
-        }
-        return;
+      if (response.ok) {
+        setSubmitSuccess(true);
+        reset();
+      } else {
+        throw new Error('API Error');
       }
-
-      // Success!
-      setSubmitSuccess(true);
-      reset();
-      
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 10000);
-
     } catch {
-      // Network or parsing error - always show feedback
-      setSubmitError('Erro de conexão. Por favor, tente novamente ou fale pelo WhatsApp:');
-      setWhatsappFallback(defaultWhatsappUrl);
+      setSubmitError(t('error'));
     } finally {
       setIsSubmitting(false);
     }
@@ -101,94 +72,70 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <TextInput
-        label="Nome *"
-        placeholder="Seu nome completo"
-        {...register('name')}
-        error={errors.name?.message}
-      />
+      <div className="grid md:grid-cols-2 gap-6">
+        <TextInput
+          label={`${t('name')} *`}
+          placeholder={t('name')}
+          {...register('name')}
+          error={errors.name?.message}
+        />
 
-      <TextInput
-        label="WhatsApp *"
-        placeholder="(21) 99999-9999"
-        {...register('whatsapp')}
-        error={errors.whatsapp?.message}
-      />
+        <TextInput
+          label={`${t('whatsapp')} *`}
+          placeholder="(21) 98871-4006"
+          {...register('whatsapp')}
+          error={errors.whatsapp?.message}
+        />
+      </div>
 
       <Select
-        label="Área de Interesse *"
+        label={`${t('project_type')} *`}
         options={pilarOptions}
         {...register('pilar')}
         error={errors.pilar?.message}
       />
 
-      {/* Pocket Show Waitlist Checkbox - Only for Audiovisual */}
-      {showPocketShowCheckbox && (
-        <div className="p-4 rounded-lg bg-warning/10 border border-warning/30">
-          <label className="flex items-start gap-3 cursor-pointer">
-            <input
-              type="checkbox"
-              {...register('pocketShowWaitlist')}
-              className="mt-1 h-4 w-4 rounded border-warning text-warning focus:ring-warning"
-            />
-            <div className="flex-1">
-              <span className="font-medium text-foreground">
-                Quero entrar na lista do Pocket Show
-              </span>
-              <p className="text-sm text-foreground-secondary mt-1">
-                O Pocket Show está em montagem. Marque para ter prioridade quando disponível.
-              </p>
-            </div>
-          </label>
-        </div>
-      )}
-
       <TextArea
-        label="Mensagem *"
-        placeholder="Descreva brevemente seu projeto ou necessidade..."
+        label={`${t('message')} *`}
+        placeholder={t('how_can_help')}
         rows={4}
         {...register('message')}
         error={errors.message?.message}
       />
 
-      {/* Success Message */}
       {submitSuccess && (
-        <div className="p-4 rounded-lg bg-success/10 border border-success text-success">
-          ✓ Mensagem enviada com sucesso! Entraremos em contato em breve.
+        <div className="p-4 rounded-xl bg-success/10 border border-success text-success text-sm font-bold flex items-center gap-2">
+          <span>{t('success')}</span>
         </div>
       )}
 
-      {/* Error Message with WhatsApp Fallback */}
       {submitError && (
-        <div className="p-4 rounded-lg bg-error/10 border border-error text-error">
-          <div className="flex items-start gap-3">
-            <AlertCircle size={20} className="flex-shrink-0 mt-0.5" />
-            <div className="flex-1">
-              <p className="mb-3">{submitError}</p>
-              {whatsappFallback && (
-                <Link
-                  href={whatsappFallback}
-                  target="_blank"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#25D366] text-white font-medium hover:bg-[#128C7E] transition-colors"
-                >
-                  <MessageCircle size={18} />
-                  Abrir WhatsApp
-                </Link>
-              )}
-            </div>
-          </div>
+        <div className="p-4 rounded-xl bg-error/10 border border-error text-error text-sm flex items-center gap-2 font-bold">
+          <AlertCircle size={18} /> {submitError}
         </div>
       )}
 
-      <Button type="submit" size="lg" disabled={isSubmitting} className="w-full md:w-auto">
-        {isSubmitting ? (
-          'Enviando...'
-        ) : (
-          <>
-            Enviar Mensagem <Send size={20} className="ml-2" />
-          </>
+      <Button type="submit" size="lg" disabled={isSubmitting} className="w-full h-14 text-lg shadow-xl shadow-primary/20">
+        {isSubmitting ? t('sending') : (
+          <div className="flex items-center gap-2">
+            {t('send')} <Send size={20} />
+          </div>
         )}
       </Button>
+
+      <div className="text-center pt-6 border-t border-border/50 mt-6">
+         <p className="text-[10px] text-foreground-muted mb-4 uppercase tracking-[0.2em] font-black">
+            {t('or')}
+         </p>
+         <Link
+            href={`https://wa.me/${aboutInfo.whatsapp.replace(/\D/g, '')}` as any}
+            target="_blank"
+            className="inline-flex items-center gap-2 text-emerald-500 hover:text-emerald-400 transition-colors font-black text-sm uppercase tracking-wider"
+          >
+            <MessageCircle size={20} />
+            {t('chat_wa')}
+          </Link>
+      </div>
     </form>
   );
 }
