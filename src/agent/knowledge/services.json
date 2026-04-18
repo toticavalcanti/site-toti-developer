@@ -1,0 +1,496 @@
+{
+    "version": "1.0",
+    "last_updated": "2026-02-17",
+    "source": "Extracted from src/mockData.ts and src/components/PackagesSection.tsx",
+    "services": [
+        {
+            "id": "videoclipes-ia",
+            "name": "Videoclipes com IA Generativa",
+            "category": "audiovisual",
+            "short_description": "Produção completa de videoclipes usando IA generativa combinada com pós-produção profissional",
+            "pricing": {
+                "model": "por minuto",
+                "ranges": [
+                    {
+                        "name": "Simples",
+                        "price": "R$ 1.200 - 1.800",
+                        "description": "Visual clean, lyric video, performance. Cenas estáticas ou movimento simples"
+                    },
+                    {
+                        "name": "Médio",
+                        "price": "R$ 2.500 - 3.500",
+                        "description": "Narrativa visual desenvolvida, múltiplas cenas e locações, 3-5 personagens"
+                    },
+                    {
+                        "name": "Complexo",
+                        "price": "R$ 4.000 - 5.000",
+                        "description": "Narrativa épica, 10+ cenas, muitos personagens, efeitos especiais, motion graphics"
+                    }
+                ],
+                "examples": [
+                    "Lyric video 3min (simples): R$ 4.500",
+                    "Clipe narrativo 3:45min (médio): R$ 11.250",
+                    "Clipe épico 4:30min (complexo): R$ 20.250"
+                ]
+            },
+            "timeline": "2-4 semanas",
+            "includes": [
+                "Desenvolvimento de conceito criativo",
+                "Geração de imagens/vídeos com IA",
+                "Edição profissional",
+                "Color grading cinematográfico",
+                "2 rodadas de revisão",
+                "Entrega em 4K"
+            ],
+            "essential_questions": [
+                "Qual o estilo visual que você imagina?",
+                "Já tem a música pronta?",
+                "Qual a duração do clipe?",
+                "Tem alguma referência visual?"
+            ]
+        },
+        {
+            "id": "producao-musical",
+            "name": "Produção Musical Profissional",
+            "category": "music-production",
+            "short_description": "Transformo suas ideias musicais em música gravada com arranjos profissionais",
+            "pricing": {
+                "model": "por minuto",
+                "ranges": [
+                    {
+                        "name": "Simples",
+                        "price": "R$ 800 - 1.000",
+                        "description": "Material tem qualidade razoável, poucos elementos, arranjo direto"
+                    },
+                    {
+                        "name": "Médio",
+                        "price": "R$ 1.000 - 1.300",
+                        "description": "Material precisa de trabalho considerável. Banda completa, 10-20 tracks"
+                    },
+                    {
+                        "name": "Complexo",
+                        "price": "R$ 1.300 - 1.500",
+                        "description": "Reconstrução quase total. 20+ tracks, orquestração, experimentação"
+                    }
+                ],
+                "discounts": [
+                    "4-6 músicas (EP): 10% de desconto",
+                    "7-10 músicas: 15% de desconto",
+                    "11+ músicas (álbum): 20% de desconto"
+                ],
+                "examples": [
+                    "Balada acústica 3:30min (simples): R$ 3.150",
+                    "Rock com banda 4min (médio): R$ 4.600",
+                    "Álbum 10 músicas, 42min total: R$ 42.000"
+                ]
+            },
+            "timeline": "2-6 semanas por faixa",
+            "includes": [
+                "Transformação de ideias musicais em produção completa",
+                "Arranjo profissional no estilo que você escolher",
+                "Correção de afinação vocal",
+                "Mixagem profissional multitrack",
+                "Masterização para streaming/CD",
+                "Até 2 rodadas de revisão"
+            ],
+            "styles_note": "PRODUZ QUALQUER ESTILO: MPB, Samba, Forró, Sertanejo, Pop, Rock, Indie, Jazz, Blues, Funk, Soul, Eletrônico, World Music, Orquestral, Experimental",
+            "essential_questions": [
+                "Qual estilo musical?",
+                "Já tem a música gravada ou é só uma ideia?",
+                "Quantas músicas?",
+                "Qual o prazo?"
+            ]
+        },
+        {
+            "id": "pocket-show",
+            "name": "Pocket Shows & Apresentações Musicais",
+            "category": "live-performance",
+            "short_description": "Performance ao vivo profissional com flauta e sax",
+            "status": "em_montagem",
+            "pricing": {
+                "model": "por hora",
+                "ranges": [
+                    {
+                        "name": "Cachê Artístico (SEM equipamento)",
+                        "price": "R$ 2.500 - 5.500",
+                        "breakdown": [
+                            "1 hora: R$ 2.500",
+                            "1h30min: R$ 3.200",
+                            "2 horas: R$ 4.000",
+                            "3 horas: R$ 5.500"
+                        ]
+                    }
+                ],
+                "equipment": {
+                    "note": "Se o local NÃO tem equipamento adequado, posso providenciar:",
+                    "packages": [
+                        {
+                            "name": "Pacote Som Básico (até 80 pessoas)",
+                            "price": "R$ 1.800"
+                        },
+                        {
+                            "name": "Pacote Som Profissional (80-200 pessoas)",
+                            "price": "R$ 4.400"
+                        },
+                        {
+                            "name": "Pacote Luz Básica",
+                            "price": "R$ 700"
+                        },
+                        {
+                            "name": "Pacote Luz Profissional",
+                            "price": "R$ 2.500"
+                        }
+                    ]
+                },
+                "examples": [
+                    "Evento corporativo 1h (com equipamento próprio): R$ 2.500",
+                    "Casamento 1h30 (preciso levar som e luz): R$ 8.300",
+                    "Show 2h com produção completa: R$ 10.900"
+                ]
+            },
+            "timeline": "Sob consulta - em montagem",
+            "includes": [
+                "Performance ao vivo (flauta transversal, sax tenor/soprano)",
+                "Bases pré-gravadas profissionais OU playback",
+                "Repertório customizado",
+                "Soundcheck (chego 1h antes)",
+                "Deslocamento incluso até 50km do Rio de Janeiro"
+            ],
+            "essential_questions": [
+                "Qual o tipo de evento?",
+                "Quantas pessoas?",
+                "O local tem equipamento de som?",
+                "Qual a cidade/data?"
+            ]
+        },
+        {
+            "id": "imagens-ia",
+            "name": "Imagens com IA Generativa",
+            "category": "visual-design",
+            "short_description": "Arte digital de alta qualidade para qualquer aplicação",
+            "pricing": {
+                "model": "por quantidade",
+                "ranges": [
+                    {
+                        "name": "Simples",
+                        "price": "R$ 80 - 100",
+                        "description": "Posts de redes sociais, conteúdo para feed"
+                    },
+                    {
+                        "name": "Médio",
+                        "price": "R$ 120 - 150",
+                        "description": "Conteúdo de marketing, arte conceitual, personagens"
+                    },
+                    {
+                        "name": "Complexo",
+                        "price": "R$ 180 - 200",
+                        "description": "Capas de álbum/single, key art, imagens para produtos"
+                    }
+                ],
+                "discounts": [
+                    "Pack 10 imagens: 10% desconto",
+                    "Pack 20 imagens: 15% desconto",
+                    "Pack 50 imagens: 20% desconto",
+                    "Pack 100+ imagens: 25% desconto"
+                ],
+                "examples": [
+                    "Pack 10 imagens médias para Instagram: R$ 1.215",
+                    "Pack 50 imagens simples (feed mensal): R$ 3.600",
+                    "Capa de álbum profissional: R$ 600"
+                ]
+            },
+            "timeline": "3-7 dias",
+            "includes": [
+                "Geração de imagens com IA generativa",
+                "Múltiplas variações até aprovação",
+                "Pós-edição no Photoshop",
+                "Entrega em alta resolução",
+                "Formatos otimizados"
+            ],
+            "essential_questions": [
+                "Para que vai usar as imagens?",
+                "Quantas imagens precisa?",
+                "Tem alguma referência de estilo?"
+            ]
+        },
+        {
+            "id": "desenvolvimento-web",
+            "name": "Desenvolvimento Web Full-Stack",
+            "category": "software",
+            "short_description": "Sites e aplicações modernas que convertem",
+            "pricing": {
+                "model": "por projeto",
+                "ranges": [
+                    {
+                        "name": "Landing Page",
+                        "price": "R$ 3.000 - 5.000",
+                        "description": "1 página única, design responsivo, formulário de contato",
+                        "timeline": "1-2 semanas"
+                    },
+                    {
+                        "name": "Site Institucional",
+                        "price": "R$ 8.000 - 15.000",
+                        "description": "5-10 páginas, CMS básico, blog, SEO avançado",
+                        "timeline": "3-5 semanas"
+                    },
+                    {
+                        "name": "E-commerce",
+                        "price": "R$ 20.000 - 40.000",
+                        "description": "Loja completa, carrinho, pagamentos, admin, estoque",
+                        "timeline": "6-10 semanas"
+                    },
+                    {
+                        "name": "Plataforma Customizada",
+                        "price": "R$ 40.000+",
+                        "description": "Sistema complexo, dashboard, APIs, integrações",
+                        "timeline": "10-20 semanas"
+                    }
+                ],
+                "examples": [
+                    "Site institucional 7 páginas + blog: R$ 12.000",
+                    "Landing page otimizada para conversão: R$ 4.000",
+                    "E-commerce 50 produtos + admin: R$ 28.000"
+                ]
+            },
+            "timeline": "1-20 semanas conforme escopo",
+            "includes": [
+                "Planejamento e arquitetura de software",
+                "UI/UX Design responsivo e moderno",
+                "Desenvolvimento frontend (Next.js/React)",
+                "Backend e APIs escaláveis (Node.js)",
+                "SEO otimizado",
+                "Performance 95+ (Google Lighthouse)",
+                "Deploy em produção",
+                "30-90 dias de suporte pós-lançamento"
+            ],
+            "essential_questions": [
+                "Qual o tipo de site? (landing, institucional, e-commerce, plataforma)",
+                "Quantas páginas aproximadamente?",
+                "Precisa de área administrativa?",
+                "Qual o prazo ideal?"
+            ]
+        },
+        {
+            "id": "videos-avatares-ia",
+            "name": "Vídeos Publicitários com Avatares IA",
+            "category": "audiovisual",
+            "short_description": "Porta-vozes virtuais realistas para suas campanhas em redes sociais",
+            "pricing": {
+                "model": "por segundo",
+                "ranges": [
+                    {
+                        "name": "Básico",
+                        "price": "R$ 15 - 20",
+                        "description": "Avatar padrão, script simples, fundo fixo ou chroma key"
+                    },
+                    {
+                        "name": "Profissional",
+                        "price": "R$ 25 - 35",
+                        "description": "Avatar customizado, cenário elaborado, edição avançada, legendas"
+                    },
+                    {
+                        "name": "Premium",
+                        "price": "R$ 40 - 50",
+                        "description": "Múltiplos avatares, motion graphics, animações, produção cinematográfica"
+                    }
+                ],
+                "discounts": [
+                    "Pack 5 vídeos: 10% desconto",
+                    "Pack 10 vídeos: 15% desconto",
+                    "Pack mensal (20+ vídeos): 20% desconto"
+                ],
+                "examples": [
+                    "Vídeo de 30s para Instagram Reels (profissional): R$ 900",
+                    "Série de 10 vídeos de 20s para TikTok (básico): R$ 2.975",
+                    "Vídeo institucional 90s (premium): R$ 4.050"
+                ]
+            },
+            "timeline": "3-5 dias úteis",
+            "includes": [
+                "Avatar IA realista com sincronização labial perfeita",
+                "Voz sintética profissional OU narração fornecida",
+                "Cenário/background personalizado",
+                "Edição e pós-produção",
+                "Legendas (opcional)",
+                "Exportação em formatos otimizados para redes sociais",
+                "1 rodada de revisão"
+            ],
+            "essential_questions": [
+                "Qual a duração do vídeo?",
+                "Para qual rede social? (Instagram, TikTok, YouTube)",
+                "Já tem o script/roteiro?",
+                "Quantos vídeos precisa?"
+            ]
+        },
+        {
+            "id": "automacao-ia",
+            "name": "Automação Empresarial com IA",
+            "category": "ai",
+            "short_description": "Reduza custos e aumente eficiência com inteligência artificial",
+            "pricing": {
+                "model": "por projeto",
+                "ranges": [
+                    {
+                        "name": "Consultoria + PoC",
+                        "price": "R$ 5.000 - 10.000",
+                        "description": "Diagnóstico completo + Prova de Conceito funcional",
+                        "timeline": "2-3 semanas"
+                    },
+                    {
+                        "name": "Implementação Básica",
+                        "price": "R$ 20.000 - 35.000",
+                        "description": "Chatbot, classificador de docs, gerador de conteúdo",
+                        "timeline": "6-10 semanas"
+                    },
+                    {
+                        "name": "Implementação Completa",
+                        "price": "R$ 50.000 - 80.000",
+                        "description": "Solução multi-agente, integrações complexas, customização avançada",
+                        "timeline": "12-16 semanas"
+                    }
+                ],
+                "examples": [
+                    "Chatbot atendimento 24/7: R$ 25.000",
+                    "Sistema análise de contratos + chatbot: R$ 65.000",
+                    "Consultoria + PoC (3 semanas): R$ 8.000"
+                ]
+            },
+            "timeline": "2-16 semanas conforme escopo",
+            "includes": [
+                "Análise de processos e identificação de oportunidades",
+                "Desenvolvimento de soluções customizadas",
+                "Integração com sistemas existentes",
+                "Treinamento de equipe técnica e usuários",
+                "Documentação técnica completa",
+                "Suporte inicial (30-60 dias)"
+            ],
+            "use_cases": [
+                "Chatbots inteligentes para atendimento 24/7",
+                "Análise automatizada de documentos e contratos",
+                "Geração de conteúdo personalizado em escala",
+                "Análise preditiva e forecasting",
+                "Automação de workflows complexos"
+            ],
+            "essential_questions": [
+                "Qual processo você quer automatizar?",
+                "Quantas pessoas a solução vai atender?",
+                "Já tem sistemas que precisam se integrar?",
+                "Qual o objetivo principal? (reduzir custo, aumentar velocidade, melhorar qualidade)"
+            ]
+        },
+        {
+            "id": "consultoria-tecnologia",
+            "name": "Consultoria em Tecnologia e Presença Digital",
+            "category": "consulting",
+            "short_description": "Orientação estratégica para pequenos empresários sobre tecnologia e presença digital",
+            "pricing": {
+                "model": "por sessão",
+                "ranges": [
+                    {
+                        "name": "Sessão Única",
+                        "price": "R$ 500 - 800",
+                        "description": "1-2 horas de consultoria focada em um problema específico"
+                    },
+                    {
+                        "name": "Pacote Mensal",
+                        "price": "R$ 2.000 - 3.500",
+                        "description": "4 sessões mensais + suporte por WhatsApp"
+                    },
+                    {
+                        "name": "Projeto Completo",
+                        "price": "Sob consulta",
+                        "description": "Diagnóstico + plano estratégico + acompanhamento de implementação"
+                    }
+                ]
+            },
+            "timeline": "Flexível conforme necessidade",
+            "includes": [
+                "Diagnóstico de presença digital atual",
+                "Recomendações de ferramentas e plataformas",
+                "Orientação sobre investimentos em tecnologia",
+                "Estratégia de marketing digital",
+                "Priorização de ações",
+                "Suporte na tomada de decisões técnicas"
+            ],
+            "ideal_for": [
+                "Pequenos empresários iniciando presença digital",
+                "Negócios locais querendo expandir online",
+                "Empreendedores com dúvidas sobre tecnologia",
+                "Empresas que precisam validar ideias antes de investir"
+            ],
+            "essential_questions": [
+                "Qual o seu negócio?",
+                "Qual o principal desafio hoje?",
+                "Já tem presença digital? (site, redes sociais)",
+                "Qual o orçamento disponível para investir?"
+            ]
+        }
+    ],
+    "packages": [
+        {
+            "name": "Site Express",
+            "description": "Presença digital profissional em tempo recorde",
+            "price": "a partir de R$ 3.000",
+            "includes": [
+                "Landing page responsiva",
+                "WhatsApp integrado",
+                "SEO básico",
+                "Formulário de contato"
+            ]
+        },
+        {
+            "name": "WhatsApp IA Vendedor",
+            "description": "Atendimento automatizado que qualifica leads 24h",
+            "price": "a partir de R$ 5.000",
+            "includes": [
+                "Bot humanizado",
+                "Captação automática de leads",
+                "Handoff para humano",
+                "Tags e segmentação"
+            ],
+            "highlight": true
+        },
+        {
+            "name": "Funil Completo",
+            "description": "Do anúncio ao fechamento, tudo integrado",
+            "price": "a partir de R$ 15.000",
+            "includes": [
+                "Landing page otimizada",
+                "WhatsApp IA integrado",
+                "Automação de follow-up",
+                "Dashboard de métricas"
+            ]
+        },
+        {
+            "name": "Pocket Show",
+            "description": "Em montagem — entre na lista de espera",
+            "price": "valores sob consulta",
+            "status": "waiting_list",
+            "includes": [
+                "Performance ao vivo (flauta e sax)",
+                "Repertório personalizado",
+                "Formatos variados em definição",
+                "Prioridade para quem reservar"
+            ]
+        }
+    ],
+    "agent_rules": {
+        "tone": "Humano real conversando no WhatsApp, não robô ou vendedor",
+        "message_format": "Máximo 2-3 linhas, APENAS UMA pergunta por mensagem",
+        "pricing_rule": "SEMPRE usar os preços deste JSON. NUNCA inventar valores fora daqui",
+        "missing_price_rule": "Se o serviço não tiver preço específico, dizer 'sob consulta' e perguntar mais sobre o projeto",
+        "qualification_flow": [
+            "1. Entender o que a pessoa quer",
+            "2. Contexto (pra que negócio/uso?)",
+            "3. Prazo aproximado",
+            "4. Orçamento (só se não mencionado antes)"
+        ],
+        "never_do": [
+            "Pedir orçamento na primeira interação",
+            "Perguntar múltiplas coisas de uma vez",
+            "Repetir informações que o cliente já deu",
+            "Usar clichês de vendedor ('adorei', 'tem muito potencial')",
+            "Inventar preços fora deste catálogo"
+        ]
+    }
+}

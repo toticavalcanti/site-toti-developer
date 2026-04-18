@@ -1,0 +1,46 @@
+{
+  "name": "my-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.1",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@react-three/drei": "^9.117.3",
+    "@react-three/fiber": "^8.17.10",
+    "@tavily/core": "^0.7.1",
+    "@types/pg": "^8.16.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.11.17",
+    "googleapis": "^169.0.0",
+    "groq-sdk": "^0.37.0",
+    "lucide-react": "^0.468.0",
+    "next": "^16.1.1",
+    "openai": "^6.15.0",
+    "pg": "^8.16.3",
+    "react": "19.2.1",
+    "react-dom": "19.2.1",
+    "react-hook-form": "^7.54.2",
+    "react-tsparticles": "^2.12.2",
+    "tailwind-merge": "^2.6.0",
+    "three": "^0.170.0",
+    "tsparticles": "^2.12.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.23",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.9",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
+  }
+}

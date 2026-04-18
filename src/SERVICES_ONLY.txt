@@ -1,0 +1,679 @@
+﻿
+export const services: Service[] = [
+  // ============================================
+  // SERVIÃ‡O 1: VIDEOCLIPES COM IA GENERATIVA
+  // ============================================
+  {
+    id: '1',
+    title: 'Videoclipes com IA Generativa',
+    icon: 'Video',
+    tagline: 'Transforme sua mÃºsica em narrativa visual profissional',
+    category: 'audiovisual',
+    description: 'ProduÃ§Ã£o completa de videoclipes usando IA generativa combinada com pÃ³s-produÃ§Ã£o profissional. Trabalho com imagens geradas por IA, fotos fornecidas pelo cliente ou vÃ­deos fornecidos pelo cliente. Resultados comprovados: clipes de ZÃ© Ramalho com milhÃµes de visualizaÃ§Ãµes.',
+    detailedDescription: 'Videoclipes profissionais end-to-end com IA generativa de Ãºltima geraÃ§Ã£o. Do conceito Ã  entrega: roteiro criativo, storyboard detalhado, geraÃ§Ã£o de imagens consistentes, animaÃ§Ã£o frame-by-frame, ediÃ§Ã£o profissional e sincronizaÃ§Ã£o musical perfeita. Portfolio real: ZÃ© Ramalho (artista consagrado), Scarlett Finch (personagem virtual), PUTZ! (covers de alta fidelidade). Custo atÃ© 80% menor que produÃ§Ã£o tradicional.',
+    
+    pricing: {
+      model: 'por minuto',
+      unit: '/minuto de vÃ­deo final',
+      ranges: [
+        {
+          name: 'Simples',
+          price: 'R$ 1.200 - 1.800',
+          description: 'Visual clean, lyric video, performance. Cenas estÃ¡ticas ou movimento simples.',
+          ideal: 'Artistas independentes, singles simples, orÃ§amento limitado'
+        },
+        {
+          name: 'MÃ©dio',
+          price: 'R$ 2.500 - 3.500',
+          description: 'Narrativa visual desenvolvida, mÃºltiplas cenas e locaÃ§Ãµes, 3-5 personagens.',
+          ideal: 'Artistas estabelecidos, lanÃ§amentos importantes'
+        },
+        {
+          name: 'Complexo',
+          price: 'R$ 4.000 - 5.000',
+          description: 'Narrativa Ã©pica, 10+ cenas, muitos personagens, efeitos especiais, motion graphics.',
+          ideal: 'ProduÃ§Ãµes premium, projetos de grande impacto'
+        }
+      ],
+      examples: [
+        {
+          description: 'Lyric video 3min (simples)',
+          calculation: '3min Ã— R$ 1.500 = R$ 4.500',
+          total: 'R$ 4.500'
+        },
+        {
+          description: 'Clipe narrativo 3:45min (mÃ©dio)',
+          calculation: '3,75min Ã— R$ 3.000 = R$ 11.250',
+          total: 'R$ 11.250'
+        },
+        {
+          description: 'Clipe Ã©pico 4:30min (complexo)',
+          calculation: '4,5min Ã— R$ 4.500 = R$ 20.250',
+          total: 'R$ 20.250'
+        }
+      ]
+    },
+    
+    whatsIncluded: [
+      'Desenvolvimento de conceito criativo',
+      'GeraÃ§Ã£o de imagens/vÃ­deos com IA ou processamento de material fornecido',
+      'EdiÃ§Ã£o profissional (Premiere/DaVinci)',
+      'SincronizaÃ§Ã£o perfeita com mÃºsica',
+      'Color grading cinematogrÃ¡fico',
+      'Efeitos visuais bÃ¡sicos',
+      '2 rodadas de revisÃ£o',
+      'Entrega em 4K',
+      'VersÃµes para mÃºltiplas plataformas (16:9, 9:16, 1:1)'
+    ],
+    
+    addOns: [
+      { name: 'Making-of do clipe', price: 'R$ 1.500 (fixo)' },
+      { name: 'VersÃµes alternativas (cut diferente)', price: '+R$ 500/minuto' },
+      { name: 'Legendas/lyrics animadas', price: '+R$ 300/minuto' },
+      { name: 'Motion graphics complexos', price: '+R$ 500-1.000/minuto' },
+      { name: 'Consultoria de lanÃ§amento', price: 'R$ 1.200 (fixo)' }
+    ],
+    
+    whoItsFor: [
+      'Artistas independentes e bandas',
+      'Gravadoras e produtoras musicais',
+      'Compositores lanÃ§ando singles',
+      'Projetos de mÃºsica experimental',
+      'Artistas que buscam visual inovador'
+    ],
+    
+    benefits: [
+      'Custo 60-80% menor que produÃ§Ã£o tradicional',
+      'Prazo de entrega: 2-4 semanas',
+      'EstÃ©tica Ãºnica e visualmente impactante',
+      'Possibilidades ilimitadas de cenÃ¡rios',
+      'Resultados comprovados: milhÃµes de visualizaÃ§Ãµes',
+      'RevisÃµes inclusas no pacote'
+    ],
+    
+    realExamples: [
+      'ZÃ© Ramalho - Jardim das AcÃ¡cias: 920K+ views',
+      'ZÃ© Ramalho - CanÃ§Ã£o Agalopada: 1.9M+ views',
+      'Scarlett Finch - 6+ videoclipes produzidos'
+    ],
+    
+    technologies: [
+      'Runway Gen-3', 'Midjourney', 'Pika Labs', 
+      'Adobe Premiere Pro', 'After Effects', 'DaVinci Resolve'
+    ]
+  },
+
+  // ============================================
+  // SERVIÃ‡O 2: PRODUÃ‡ÃƒO MUSICAL PROFISSIONAL
+  // ============================================
+  {
+    id: '2',
+    title: 'ProduÃ§Ã£o Musical Profissional',
+    icon: 'Music',
+    tagline: 'Transformo material tosco em produÃ§Ã£o de nÃ­vel profissional',
+    category: 'music-production',
+    description: 'ProduÃ§Ã£o musical completa para qualquer estilo e instrumentaÃ§Ã£o. Transformo demos mal gravadas, vocais toscas e composiÃ§Ãµes bÃ¡sicas em mÃºsicas com acabamento profissional. Trabalho com tÃ©cnicas tradicionais, MIDI sequencing e IA generativa conforme apropriado.',
+    detailedDescription: 'ProduÃ§Ã£o musical end-to-end: correÃ§Ã£o de afinaÃ§Ã£o, timing, arranjo completo, instrumentaÃ§Ã£o, mixagem e masterizaÃ§Ã£o profissional. TÃ©cnicas tradicionais + IA como apoio tÃ©cnico. Qualquer estilo: MPB, Rock, Jazz, Ãrabe, Indiano... sem limitaÃ§Ãµes.',
+    
+    pricing: {
+      model: 'por minuto',
+      unit: '/minuto de mÃºsica finalizada',
+      ranges: [
+        {
+          name: 'Simples',
+          price: 'R$ 800 - 1.000',
+          description: 'Material tem qualidade razoÃ¡vel, poucos elementos, arranjo direto.',
+          ideal: 'Baladas acÃºsticas, demos que sÃ³ precisam de polish'
+        },
+        {
+          name: 'MÃ©dio',
+          price: 'R$ 1.000 - 1.300',
+          description: 'Material precisa de trabalho considerÃ¡vel. Banda completa, 10-20 tracks.',
+          ideal: 'Rock, pop, MPB com banda, arranjos elaborados'
+        },
+        {
+          name: 'Complexo',
+          price: 'R$ 1.300 - 1.500',
+          description: 'ReconstruÃ§Ã£o quase total. 20+ tracks, orquestraÃ§Ã£o, experimentaÃ§Ã£o.',
+          ideal: 'World music elaborada, orquestral, experimental, avant-garde'
+        }
+      ],
+      discounts: [
+        '4-6 mÃºsicas (EP): 10% de desconto',
+        '7-10 mÃºsicas: 15% de desconto',
+        '11+ mÃºsicas (Ã¡lbum): 20% de desconto'
+      ],
+      examples: [
+        {
+          description: 'Balada acÃºstica 3:30min (simples)',
+          calculation: '3,5min Ã— R$ 900 = R$ 3.150',
+          total: 'R$ 3.150'
+        },
+        {
+          description: 'Rock com banda 4min (mÃ©dio)',
+          calculation: '4min Ã— R$ 1.150 = R$ 4.600',
+          total: 'R$ 4.600'
+        },
+        {
+          description: 'Ãlbum 10 mÃºsicas, 42min total (mÃ©dio-complexo)',
+          calculation: '42min Ã— R$ 1.250 = R$ 52.500, menos 20% desconto',
+          total: 'R$ 42.000'
+        }
+      ]
+    },
+    
+    whatsIncluded: [
+      'TransformaÃ§Ã£o de material tosco em profissional',
+      'CorreÃ§Ã£o de afinaÃ§Ã£o vocal (tuning/melodyne)',
+      'CorreÃ§Ã£o de timing e limpeza de ruÃ­dos',
+      'Arranjo completo no estilo desejado',
+      'GravaÃ§Ãµes de flauta, sax tenor/soprano, teclados (quando aplicÃ¡vel)',
+      'ProgramaÃ§Ã£o MIDI de qualquer instrumento virtual',
+      'Uso de IA generativa quando apropriado',
+      'Mixagem profissional multitrack',
+      'MasterizaÃ§Ã£o para streaming/CD',
+      'AtÃ© 2 rodadas de revisÃ£o',
+      'Entrega em mÃºltiplos formatos (WAV, MP3, stems opcionais)'
+    ],
+    
+    stylesNote: 'PRODUZ QUALQUER ESTILO: MPB, Samba, ForrÃ³, Pop, Rock, Jazz, Blues, EletrÃ´nico, Ãrabe, Indiano, Africano, Orquestral, Experimental. Sem restriÃ§Ãµes de gÃªnero ou instrumentaÃ§Ã£o.',
+    
+    addOns: [
+      { name: 'Arte de capa single', price: 'R$ 500' },
+      { name: 'Arte de capa EP', price: 'R$ 800' },
+      { name: 'Arte de capa Ã¡lbum completo', price: 'R$ 1.200' },
+      { name: 'Lyric video bÃ¡sico', price: 'Conforme minutagem de vÃ­deo' },
+      { name: 'ComposiÃ§Ã£o original (letra + melodia + harmonia)', price: 'R$ 1.500' }
+    ],
+    
+    whoItsFor: [
+      'Compositores sem estrutura de gravaÃ§Ã£o',
+      'Artistas independentes lanÃ§ando Ã¡lbuns',
+      'Produtoras musicais terceirizando produÃ§Ã£o',
+      'Projetos de cinema e audiovisual',
+      'Empresas (jingles, vÃ­deos institucionais)',
+      'Criadores de conteÃºdo para YouTube/TikTok'
+    ],
+    
+    benefits: [
+      'Qualidade profissional sem investir em estÃºdio',
+      'Flexibilidade criativa total nos arranjos',
+      'Prazo: 2-6 semanas por faixa completa',
+      'RevisÃµes ilimitadas atÃ© aprovaÃ§Ã£o final',
+      'ProduÃ§Ã£o de Ã¡lbuns completos',
+      'Qualquer estilo ou instrumentaÃ§Ã£o'
+    ],
+    
+    realExamples: [
+      'Antologia 50 Anos - ZÃ© Ramalho: 22 faixas produzidas',
+      'Estilos variados: Blues, Ãrabe, Indiano, Regional',
+      'TÃ©cnicas hÃ­bridas: tradicional + MIDI + IA'
+    ],
+    
+    technologies: [
+      'Logic Pro X', 'Ableton Live', 'Suno AI', 'Udio', 
+      'ElevenLabs', 'iZotope Suite', 'Native Instruments'
+    ]
+  },
+
+  // ============================================
+  // SERVIÃ‡O 3: POCKET SHOWS & APRESENTAÃ‡Ã•ES MUSICAIS
+  // ============================================
+  {
+    id: '3',
+    title: 'Pocket Shows & ApresentaÃ§Ãµes Musicais',
+    icon: 'Mic2',
+    tagline: 'Performance ao vivo profissional com flauta e sax',
+    category: 'live-performance',
+    description: 'ApresentaÃ§Ãµes musicais ao vivo: flauta transversal, sax tenor, sax soprano, com bases prÃ©-gravadas ou playback profissional. RepertÃ³rio customizado conforme o evento. Equipamento de som e luz pode ser incluÃ­do ou o cliente pode fornecer.',
+    detailedDescription: 'Performances musicais ao vivo profissionais. Instrumentos: flauta transversal, saxofone tenor e soprano. Formato com bases gravadas ou playback. Anos de experiÃªncia: banda de ZÃ© Ramalho desde 1995, Sandra de SÃ¡, Paulo Moura. MÃºsico profissional desde 1987.',
+    
+    pricing: {
+      model: 'por hora',
+      unit: '/hora de show',
+      ranges: [
+        {
+          name: 'CachÃª ArtÃ­stico (SEM equipamento)',
+          price: 'R$ 2.500 - 5.500',
+          description: 'Apenas a performance. Cliente fornece equipamento adequado ou contrata separadamente.',
+          breakdown: [
+            '1 hora: R$ 2.500',
+            '1h30min: R$ 3.200',
+            '2 horas: R$ 4.000',
+            '3 horas: R$ 5.500'
+          ]
+        }
+      ],
+      equipment: {
+        note: 'Se o local NÃƒO tem equipamento adequado, posso providenciar:',
+        packages: [
+          {
+            name: 'Pacote Som BÃ¡sico (atÃ© 80 pessoas)',
+            price: 'R$ 1.800',
+            includes: '2x caixas P.A., mesa digital, 3x microfones, cabos, tÃ©cnico, transporte'
+          },
+          {
+            name: 'Pacote Som Profissional (80-200 pessoas)',
+            price: 'R$ 4.400',
+            includes: '4x caixas P.A., 2x subwoofers, mesa profissional, 4x microfones, monitores, tÃ©cnico experiente'
+          },
+          {
+            name: 'Pacote Luz BÃ¡sica',
+            price: 'R$ 700',
+            includes: '4x refletores LED RGB, controlador DMX, tripÃ©s'
+          },
+          {
+            name: 'Pacote Luz Profissional',
+            price: 'R$ 2.500',
+            includes: '8x refletores LED, 4x moving heads, mesa DMX, operador de luz'
+          }
+        ]
+      },
+      examples: [
+        {
+          description: 'Evento corporativo 1h (com equipamento prÃ³prio)',
+          calculation: 'CachÃª 1h: R$ 2.500 + Equipamento: R$ 0',
+          total: 'R$ 2.500'
+        },
+        {
+          description: 'Casamento 1h30 (preciso levar som e luz)',
+          calculation: 'CachÃª 1h30: R$ 3.200 + Som Profissional: R$ 4.400 + Luz BÃ¡sica: R$ 700',
+          total: 'R$ 8.300'
+        },
+        {
+          description: 'Show 2h com produÃ§Ã£o completa',
+          calculation: 'CachÃª 2h: R$ 4.000 + Som Pro: R$ 4.400 + Luz Pro: R$ 2.500',
+          total: 'R$ 10.900'
+        }
+      ]
+    },
+    
+    whatsIncluded: [
+      'Performance ao vivo (flauta transversal, sax tenor/soprano)',
+      'Bases prÃ©-gravadas profissionais OU playback',
+      'RepertÃ³rio customizado (atÃ© 3 mÃºsicas exclusivas)',
+      'Ensaio e preparaÃ§Ã£o',
+      'Soundcheck (chego 1h antes quando opero som)',
+      'Deslocamento incluso atÃ© 50km do Rio de Janeiro'
+    ],
+    
+    equipmentRequired: {
+      title: 'Equipamento MÃ­nimo NecessÃ¡rio (se cliente fornecer):',
+      items: [
+        '2x Caixas P.A. ativas (mÃ­nimo 12", ideal 15")',
+        '1x Mesa de som (mÃ­nimo 8 canais)',
+        '3x Microfones (1 voz, 1 flauta, 1 sax)',
+        '3-4x Pedestais de microfone',
+        'Cabos XLR e P10 necessÃ¡rios',
+        '1x DI Box (para conectar bases/playback)',
+        'MonitoraÃ§Ã£o (caixa de retorno ou in-ear)'
+      ]
+    },
+    
+    addOns: [
+      { name: 'Deslocamento 51-100km', price: '+R$ 250' },
+      { name: 'Deslocamento 101-200km', price: '+R$ 500' },
+      { name: 'Deslocamento acima 200km', price: 'Sob consulta' },
+      { name: 'MÃºsico adicional (violÃ£o/guitarra/teclado/percussÃ£o/vocal)', price: 'R$ 500-1.000 cada' },
+      { name: 'Registro em vÃ­deo (1 cÃ¢mera, gravaÃ§Ã£o bruta)', price: 'R$ 800' },
+      { name: 'Registro em vÃ­deo editado', price: 'R$ 1.500' },
+      { name: 'Registro profissional (2-3 cÃ¢meras)', price: 'R$ 3.000' }
+    ],
+    
+    whoItsFor: [
+      'Eventos corporativos',
+      'Casamentos e festas',
+      'Restaurantes e lounges',
+      'LanÃ§amentos de produtos',
+      'Feiras e congressos',
+      'Eventos culturais'
+    ],
+    
+    benefits: [
+      'MÃºsico profissional com 37 anos de carreira',
+      'RepertÃ³rio versÃ¡til e customizÃ¡vel',
+      'Equipamento profissional disponÃ­vel',
+      'Auto-operado (economia) ou com tÃ©cnico (qualidade mÃ¡xima)',
+      'Flexibilidade de duraÃ§Ã£o (1h atÃ© 3h)',
+      'ExperiÃªncia com artistas consagrados (ZÃ© Ramalho, Sandra de SÃ¡, Paulo Moura)'
+    ],
+    
+    realExamples: [
+      'Toco com ZÃ© Ramalho desde 1995',
+      'Toquei com Sandra de SÃ¡ entre 1993-1994',
+      'Integrei orquestra de sax de Paulo Moura (1990-1995)',
+      'MÃºsico profissional desde 1987'
+    ]
+  },
+
+  // ============================================
+  // SERVIÃ‡O 4: IMAGENS COM IA GENERATIVA
+  // ============================================
+  {
+    id: '4',
+    title: 'Arte Generativa para Produtos',
+    icon: 'Palette',
+    tagline: 'Arte digital de alta qualidade para qualquer aplicaÃ§Ã£o',
+    category: 'visual-design',
+    description: 'CriaÃ§Ã£o de imagens usando IA generativa (Midjourney, Stable Diffusion) com pÃ³s-ediÃ§Ã£o profissional no Photoshop. Trabalho com geraÃ§Ã£o de imagens originais, nÃ£o faÃ§o gravaÃ§Ã£o fotogrÃ¡fica. Ideal para marketing, redes sociais, capas de Ã¡lbum, produtos e branding.',
+    detailedDescription: 'GeraÃ§Ã£o de imagens profissionais com IA + pÃ³s-ediÃ§Ã£o Photoshop. Estampas Ãºnicas, arte conceitual, capas de Ã¡lbum, marketing visual. Lojas comprovadamente ativas: Redbubble e Colab55. Pricing transparente por quantidade com desconto progressivo.',
+    
+    pricing: {
+      model: 'por quantidade',
+      unit: '/imagem de alta qualidade',
+      ranges: [
+        {
+          name: 'Simples',
+          price: 'R$ 80 - 100',
+          description: 'Posts de redes sociais, conteÃºdo para feed, ilustraÃ§Ãµes simples.',
+          iterations: '1-2 iteraÃ§Ãµes atÃ© aprovaÃ§Ã£o'
+        },
+        {
+          name: 'MÃ©dio',
+          price: 'R$ 120 - 150',
+          description: 'ConteÃºdo de marketing, arte conceitual, personagens.',
+          iterations: '3-5 iteraÃ§Ãµes + pÃ³s-ediÃ§Ã£o Photoshop'
+        },
+        {
+          name: 'Complexo',
+          price: 'R$ 180 - 200',
+          description: 'Capas de Ã¡lbum/single, key art, imagens para produtos/merchandise.',
+          iterations: 'MÃºltiplas iteraÃ§Ãµes + ediÃ§Ã£o avanÃ§ada + alta resoluÃ§Ã£o para impressÃ£o'
+        }
+      ],
+      discounts: [
+        'Pack 10 imagens: 10% desconto',
+        'Pack 20 imagens: 15% desconto',
+        'Pack 50 imagens: 20% desconto',
+        'Pack 100+ imagens: 25% desconto'
+      ],
+      examples: [
+        {
+          description: 'Pack 10 imagens mÃ©dias para Instagram',
+          calculation: '10 Ã— R$ 135 Ã— 0,90 (desconto)',
+          total: 'R$ 1.215'
+        },
+        {
+          description: 'Pack 50 imagens simples (feed mensal)',
+          calculation: '50 Ã— R$ 90 Ã— 0,80 (desconto)',
+          total: 'R$ 3.600'
+        },
+        {
+          description: 'Capa de Ã¡lbum profissional (1 imagem complexa)',
+          calculation: '1 Ã— R$ 600 (inclui mÃºltiplas variaÃ§Ãµes)',
+          total: 'R$ 600'
+        }
+      ]
+    },
+    
+    whatsIncluded: [
+      'GeraÃ§Ã£o de imagens com IA generativa de Ãºltima geraÃ§Ã£o',
+      'MÃºltiplas variaÃ§Ãµes atÃ© aprovaÃ§Ã£o',
+      'PÃ³s-ediÃ§Ã£o no Photoshop (quando aplicÃ¡vel)',
+      'Entrega em alta resoluÃ§Ã£o',
+      'Formatos otimizados para uso pretendido',
+      'Arquivos para web e/ou impressÃ£o'
+    ],
+    
+    useCases: [
+      {
+        name: 'Influencer Virtual',
+        description: 'Setup inicial 50 imagens: R$ 4.500-6.000',
+        details: 'CriaÃ§Ã£o de personagem consistente + biblioteca inicial'
+      },
+      {
+        name: 'ConteÃºdo para Redes Sociais',
+        description: 'Pack mensal 15-30 posts: R$ 1.200-2.200',
+        details: 'Posts para Instagram, Facebook, LinkedIn'
+      },
+      {
+        name: 'Capa de Ãlbum Completo',
+        description: 'Capa + contracapa + encarte: R$ 1.500',
+        details: 'Arte completa para lanÃ§amento musical'
+      },
+      {
+        name: 'Marketing e Campanhas',
+        description: 'Conforme quantidade e complexidade',
+        details: 'Banners, ads, materiais promocionais'
+      }
+    ],
+    
+    whoItsFor: [
+      'Artistas e mÃºsicos (capas de Ã¡lbum)',
+      'Empresas (marketing e branding)',
+      'Influencers e criadores de conteÃºdo',
+      'E-commerces (imagens de produtos conceituais)',
+      'AgÃªncias de publicidade',
+      'Projetos de personagens virtuais'
+    ],
+    
+    benefits: [
+      'Custo muito inferior ao design tradicional',
+      'Velocidade: mÃºltiplas variaÃ§Ãµes em dias',
+      'Estilo Ãºnico e difÃ­cil de replicar',
+      'Flexibilidade criativa total',
+      'Expertise em composiÃ§Ã£o visual e curadoria',
+      'Artes prontas para aplicaÃ§Ã£o digital ou impressa'
+    ],
+    
+    realExamples: [
+      'Loja ativa Redbubble: www.redbubble.com/people/toticavalcanti',
+      'Loja ativa Colab55: produtos publicados e Ã  venda',
+      'Scarlett Finch: 100+ imagens de personagem virtual',
+      'Capas de Ã¡lbum e singles diversos'
+    ],
+    
+    technologies: [
+      'Midjourney', 'Stable Diffusion', 'DALL-E',
+      'Adobe Photoshop', 'Lightroom', 'Illustrator'
+    ]
+  },
+
+  // ============================================
+  // SERVIÃ‡O 5: DESENVOLVIMENTO WEB FULL-STACK
+  // ============================================
+  {
+    id: '5',
+    title: 'Desenvolvimento Web Full-Stack',
+    icon: 'Code2',
+    tagline: 'Sites e aplicaÃ§Ãµes modernas que convertem',
+    category: 'software',
+    description: 'Desenvolvimento completo de aplicaÃ§Ãµes web profissionais: desde sites institucionais atÃ© e-commerces e plataformas complexas. CÃ³digo limpo, performance otimizada, SEO avanÃ§ado. Stack moderna: Next.js, React, Node.js, MongoDB.',
+    detailedDescription: 'Desenvolvimento end-to-end de aplicaÃ§Ãµes web: planejamento, arquitetura, UI/UX, frontend, backend, banco de dados, deploy produÃ§Ã£o. Performance 95+ Google Lighthouse, SEO avanÃ§ado, cÃ³digo manutenÃ­vel. Cases reais: Site ZÃ© Ramalho, este portfolio.',
+    
+    pricing: {
+      model: 'por projeto',
+      unit: 'conforme escopo',
+      ranges: [
+        {
+          name: 'Landing Page',
+          price: 'R$ 3.000 - 5.000',
+          description: '1 pÃ¡gina Ãºnica, design responsivo, formulÃ¡rio de contato.',
+          timeline: '1-2 semanas'
+        },
+        {
+          name: 'Site Institucional',
+          price: 'R$ 8.000 - 15.000',
+          description: '5-10 pÃ¡ginas, CMS bÃ¡sico, blog, SEO avanÃ§ado.',
+          timeline: '3-5 semanas'
+        },
+        {
+          name: 'E-commerce',
+          price: 'R$ 20.000 - 40.000',
+          description: 'Loja completa, carrinho, pagamentos, admin, estoque.',
+          timeline: '6-10 semanas'
+        },
+        {
+          name: 'Plataforma Customizada',
+          price: 'R$ 40.000+',
+          description: 'Sistema complexo, dashboard, APIs, integraÃ§Ãµes.',
+          timeline: '10-20 semanas'
+        }
+      ],
+      examples: [
+        {
+          description: 'Site institucional 7 pÃ¡ginas + blog',
+          calculation: 'Escopo mÃ©dio',
+          total: 'R$ 12.000'
+        },
+        {
+          description: 'Landing page otimizada para conversÃ£o',
+          calculation: 'Escopo simples',
+          total: 'R$ 4.000'
+        },
+        {
+          description: 'E-commerce 50 produtos + admin',
+          calculation: 'Escopo mÃ©dio-alto',
+          total: 'R$ 28.000'
+        }
+      ]
+    },
+    
+    whatsIncluded: [
+      'Planejamento e arquitetura de software',
+      'UI/UX Design responsivo e moderno',
+      'Desenvolvimento frontend (Next.js/React)',
+      'Backend e APIs escalÃ¡veis (Node.js)',
+      'IntegraÃ§Ã£o com bancos de dados',
+      'SEO otimizado',
+      'Performance 95+ (Google Lighthouse)',
+      'Deploy em produÃ§Ã£o',
+      '30-90 dias de suporte pÃ³s-lanÃ§amento',
+      'DocumentaÃ§Ã£o tÃ©cnica'
+    ],
+    
+    addOns: [
+      { name: 'Logo e identidade visual', price: 'R$ 2.000-5.000' },
+      { name: 'Sistema de busca avanÃ§ado', price: '+R$ 2.000' },
+      { name: 'IntegraÃ§Ã£o com ERP/CRM', price: '+R$ 5.000-15.000' },
+      { name: 'Multi-idioma (i18n)', price: '+R$ 2.000' },
+      { name: 'ManutenÃ§Ã£o mensal bÃ¡sica', price: 'R$ 800/mÃªs' },
+      { name: 'ManutenÃ§Ã£o mensal profissional', price: 'R$ 1.500/mÃªs' }
+    ],
+    
+    whoItsFor: [
+      'Empresas que precisam de presenÃ§a digital profissional',
+      'Artistas e profissionais liberais',
+      'E-commerces',
+      'Startups',
+      'AgÃªncias de marketing'
+    ],
+    
+    benefits: [
+      'Performance superior (95+ Google Lighthouse)',
+      'SEO otimizado desde o inÃ­cio',
+      'CÃ³digo escalÃ¡vel e manutenÃ­vel',
+      'Design responsivo para todos dispositivos',
+      'SeguranÃ§a e proteÃ§Ã£o de dados (LGPD)',
+      'Suporte tÃ©cnico dedicado'
+    ],
+    
+    realExamples: [
+      'Site oficial ZÃ© Ramalho: zeramalho.com.br',
+      'Performance 95+, SEO otimizado',
+      'Next.js + MongoDB + Node.js em produÃ§Ã£o',
+      'Este portfolio: toticavalcanti.com'
+    ],
+    
+    technologies: [
+      'Next.js 14+', 'React', 'TypeScript', 'Tailwind CSS',
+      'Node.js', 'MongoDB', 'PostgreSQL', 'Vercel', 'AWS'
+    ]
+  },
+
+  // ============================================
+  // SERVIÃ‡O 6: AUTOMAÃ‡ÃƒO EMPRESARIAL COM IA
+  // ============================================
+  {
+    id: '6',
+    title: 'AutomaÃ§Ã£o Empresarial com IA',
+    icon: 'Sparkles',
+    tagline: 'Reduza custos e aumente eficiÃªncia com inteligÃªncia artificial',
+    category: 'ai',
+    description: 'ImplementaÃ§Ã£o de soluÃ§Ãµes de IA para automatizar processos empresariais: chatbots inteligentes, anÃ¡lise de documentos, geraÃ§Ã£o de conteÃºdo, anÃ¡lise preditiva. Consultoria completa desde arquitetura atÃ© deploy.',
+    detailedDescription: 'SoluÃ§Ãµes de IA empresarial customizadas: chatbots 24/7, classificaÃ§Ã£o/extraÃ§Ã£o de documentos, geraÃ§Ã£o de conteÃºdo em escala, anÃ¡lise preditiva, automaÃ§Ã£o de workflows. Consultoria + desenvolvimento + treinamento de equipe. ROI comprovado em 6-12 meses.',
+    
+    pricing: {
+      model: 'por projeto',
+      unit: 'conforme escopo',
+      ranges: [
+        {
+          name: 'Consultoria + PoC',
+          price: 'R$ 5.000 - 10.000',
+          description: 'DiagnÃ³stico completo + Prova de Conceito funcional.',
+          timeline: '2-3 semanas'
+        },
+        {
+          name: 'ImplementaÃ§Ã£o BÃ¡sica',
+          price: 'R$ 20.000 - 35.000',
+          description: 'Chatbot, classificador de docs, gerador de conteÃºdo.',
+          timeline: '6-10 semanas'
+        },
+        {
+          name: 'ImplementaÃ§Ã£o Completa',
+          price: 'R$ 50.000 - 80.000',
+          description: 'SoluÃ§Ã£o multi-agente, integraÃ§Ãµes complexas, customizaÃ§Ã£o avanÃ§ada.',
+          timeline: '12-16 semanas'
+        }
+      ],
+      examples: [
+        {
+          description: 'Chatbot atendimento 24/7',
+          calculation: 'ImplementaÃ§Ã£o bÃ¡sica',
+          total: 'R$ 25.000'
+        },
+        {
+          description: 'Sistema anÃ¡lise de contratos + chatbot',
+          calculation: 'ImplementaÃ§Ã£o completa',
+          total: 'R$ 65.000'
+        },
+        {
+          description: 'Consultoria + PoC (3 semanas)',
+          calculation: 'DiagnÃ³stico inicial',
+          total: 'R$ 8.000'
+        }
+      ]
+    },
+    
+    whatsIncluded: [
+      'AnÃ¡lise de processos e identificaÃ§Ã£o de oportunidades',
+      'Desenvolvimento de soluÃ§Ãµes customizadas',
+      'IntegraÃ§Ã£o com sistemas existentes',
+      'Treinamento de equipe tÃ©cnica e usuÃ¡rios',
+      'DocumentaÃ§Ã£o tÃ©cnica completa',
+      'Suporte inicial (30-60 dias)',
+      'Monitoramento e ajustes finos'
+    ],
+    
+    useCases: [
+      'Chatbots inteligentes para atendimento 24/7',
+      'AnÃ¡lise automatizada de documentos e contratos',
+      'ClassificaÃ§Ã£o e extraÃ§Ã£o de dados estruturados',
+      'GeraÃ§Ã£o de conteÃºdo personalizado em escala',
+      'AnÃ¡lise preditiva e forecasting',
+      'AutomaÃ§Ã£o de workflows complexos'
+    ],
+    
+    whoItsFor: [
+      'Empresas de mÃ©dio e grande porte',
+      'Startups em crescimento',
+      'E-commerces que buscam otimizaÃ§Ã£o',
+      'Empresas de serviÃ§os com alta demanda',
+      'CTOs planejando transformaÃ§Ã£o digital'
+    ],
+    
+    benefits: [
+      'ReduÃ§Ã£o de atÃ© 70% em tarefas repetitivas',
+      'ROI comprovado em 6-12 meses',
+      'Escalabilidade sem aumento proporcional de custos',
+      'Insights baseados em dados reais',
+      'Vantagem competitiva com tecnologia de ponta',
+      'LiberaÃ§Ã£o de equipe para tarefas estratÃ©gicas'
+    ],
+    
+    technologies: [
+      'OpenAI GPT-4', 'Anthropic Claude', 'LangChain',
+      'Vector Databases', 'Python', 'Node.js', 'FastAPI'
+    ]
+  }
+];
