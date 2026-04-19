@@ -17,7 +17,7 @@ export default function StatsSection() {
   ];
 
   return (
-    <section className="py-32 relative border-y border-border/30">
+    <section className="py-16 sm:py-20 relative border-y border-border/30">
       <Container>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-16">
           {stats.map((stat, index) => (

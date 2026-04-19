@@ -7,10 +7,12 @@ import { aboutInfo } from '@/mockData';
 import { Mail, MessageCircle, MapPin } from 'lucide-react';
 import { Link } from '@/i18n/routing';
 import { useTranslations, useLocale } from 'next-intl';
+import { useQualification } from '@/lib/qualification-context';
 
 export default function ContatoPage() {
   const t = useTranslations();
   const locale = useLocale();
+  const { open } = useQualification();
 
   return (
     <>
@@ -59,19 +61,15 @@ export default function ContatoPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-5">
+                <div className="flex items-start gap-5 cursor-pointer" onClick={() => open(undefined, 'contact_page_info')}>
                   <div className="w-12 h-12 rounded-xl bg-background-tertiary border border-border flex items-center justify-center flex-shrink-0 text-success">
                     <MessageCircle size={24} />
                   </div>
                   <div>
                     <h3 className="font-bold text-sm uppercase tracking-widest text-foreground-muted mb-1">WhatsApp</h3>
-                    <Link
-                      href={`https://wa.me/${aboutInfo.whatsapp.replace(/\D/g, '')}` as any}
-                      target="_blank"
-                      className="text-lg text-foreground hover:text-primary transition-colors font-medium underline underline-offset-4 decoration-success/30"
-                    >
+                    <span className="text-lg text-foreground hover:text-primary transition-colors font-medium underline underline-offset-4 decoration-success/30">
                       {aboutInfo.whatsapp}
-                    </Link>
+                    </span>
                   </div>
                 </div>
 

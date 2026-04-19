@@ -7,10 +7,10 @@
     "contact": "Contato"
   },
   "hero": {
-    "badge": "Engenharia de Software & Inteligência Estratégica",
-    "title": "Infraestrutura Digital",
-    "title_accent": "de Alta Performance para Operações Globais",
-    "subtitle": "Desenvolvimento estratégico de landing pages, ecossistemas de e-commerce e automações com IA sob medida. Entrego a solidez da engenharia sênior com arquitetura de custos otimizada para máxima lucratividade e escala, projetando soluções prontas para o mercado brasileiro e internacional.",
+    "badge": "Arquitetura de Software & IA Aplicada ao Negócio",
+    "title": "Arquitetura de software sob medida",
+    "title_accent": "para negócios que operam em escala.",
+    "subtitle": "Desenvolvo sites, landing pages, e-commerces e automações com IA — soluções com arquitetura enxuta, custos otimizados e escalabilidade pensada desde a primeira linha de código. Prontas para operar do Brasil ao mercado internacional.",
     "cta_primary": "Solicitar Orçamento",
     "cta_secondary": "Ver Projetos"
   },
@@ -69,9 +69,11 @@
     "lp_name": "Landing Page Pro",
     "lp_desc": "Foco total em conversão de um único produto/serviço.",
     "store_name": "E-commerce Lite",
-    "store_desc": "Sua loja online moderna sem taxas fixas mensais.",
+    "store_desc": "Sua loja online moderna, com arquitetura de custo otimizado.",
     "custom_name": "Custom System",
     "custom_desc": "Sistemas específicos construídos com Next.js.",
+    "automation_name": "AI & WhatsApp Automation",
+    "automation_desc": "Agentes de IA avançados para vendas e qualificação.",
     "price_on_request": "Sob consulta",
     "popular": "Popular",
     "features": {
@@ -95,8 +97,16 @@
         "Painel Administrativo",
         "Segurança Bancária",
         "Escalabilidade Garantida"
+      ],
+      "automation": [
+        "Integração WhatsApp Flow",
+        "RAG com OpenAI / Anthropic",
+        "Qualificação Automática",
+        "Atendimento 24/7",
+        "Dashboard Administrativo"
       ]
-    }
+    },
+    "disclaimer": "Preços iniciais para projetos padrão. O escopo e valor final são definidos após o briefing. Todos os pacotes incluem 30 dias de suporte pós-entrega."
   },
   "cta": {
     "title": "Pronto para escalar sua operação?",
@@ -108,6 +118,7 @@
     "subtitle": "Fale comigo agora para tirar suas dúvidas ou solicitar um orçamento.",
     "form": {
       "name": "Nome",
+      "email": "E-mail",
       "whatsapp": "WhatsApp",
       "project_type": "Tipo de Projeto",
       "select": "Selecione...",
@@ -123,5 +134,50 @@
   },
   "footer": {
     "bio": "Engenharia de Software, Desenvolvimento Next.js e Automações Inteligentes. Focando em resultados práticos para pequenos negócios."
+  },
+  "tech": {
+    "eyebrow": "Stack de confiança global",
+    "title_1": "A mesma tecnologia que roda em",
+    "title_accent": "operações críticas",
+    "title_2": "das maiores empresas do mundo.",
+    "subtitle": "Não é moda passageira nem template pronto. É a stack que empresas bilionárias escolhem para sustentar produtos acessados por milhões de pessoas todos os dias — e é exatamente o que entrego em cada projeto.",
+    "disclaimer": "As empresas listadas utilizam publicamente essas tecnologias em seus produtos. Não representam clientes atendidos diretamente — representam o padrão técnico da stack."
+  },
+  "qualification": {
+    "modal_title": "Conte um pouco sobre o projeto",
+    "modal_subtitle": "Três perguntas rápidas para eu já chegar na conversa com contexto.",
+    "field_project_type": "Tipo de projeto",
+    "field_budget": "Faixa de investimento",
+    "field_timeline": "Prazo desejado",
+    "field_name": "Seu nome",
+    "field_email": "E-mail",
+    "field_message": "Algo mais que eu deva saber? (opcional)",
+    "project_landing": "Landing Page",
+    "project_ecommerce": "E-commerce",
+    "project_automation": "Automação com IA",
+    "project_custom": "Sistema sob medida",
+    "project_not_sure": "Ainda não sei",
+    "budget_under_3k": "Até R$ 3.000",
+    "budget_3k_10k": "R$ 3.000 a R$ 10.000",
+    "budget_10k_30k": "R$ 10.000 a R$ 30.000",
+    "budget_30k_plus": "Acima de R$ 30.000",
+    "budget_undefined": "Ainda estudando",
+    "timeline_asap": "O quanto antes",
+    "timeline_1_month": "Em cerca de 1 mês",
+    "timeline_2_3_months": "2 a 3 meses",
+    "timeline_no_rush": "Sem pressa",
+    "submit_email": "Enviar por e-mail",
+    "submit_whatsapp": "Prefiro conversar no WhatsApp",
+    "submit_success": "Recebido. Retorno em até 24 horas úteis.",
+    "submit_error": "Falha no envio. Tente o WhatsApp como alternativa.",
+    "availability": "Respondo em até 24h úteis · Seg–Sex 9h–19h (BRT, UTC-3)"
+  },
+  "ctas": {
+    "request_quote": "Solicitar orçamento",
+    "start_project": "Iniciar um projeto",
+    "book_call": "Agendar conversa",
+    "describe_project": "Descrever projeto",
+    "prefer_whatsapp": "Prefere conversar direto? WhatsApp",
+    "want_this_package": "Quero este formato"
   }
 }

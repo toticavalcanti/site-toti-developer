@@ -10,11 +10,13 @@ import { useMemo } from 'react';
 import { MessageCircle, ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/routing';
 import { motion } from 'framer-motion';
+import { useQualification } from '@/lib/qualification-context';
 
 export default function CasesPage() {
   const t = useTranslations('work'); // Still using 'work' namespace from JSON for now
   const tn = useTranslations('nav');
   const tc = useTranslations('cta');
+  const { open } = useQualification();
 
   const productionCases = useMemo(() => cases.filter(c => c.status === 'production'), []);
   const previewCases = useMemo(() => cases.filter(c => c.status === 'preview'), []);
@@ -125,11 +127,13 @@ export default function CasesPage() {
                 Let's hop on a call to see how I can solve your specific problem.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <Button size="lg" asChild className="w-full sm:w-auto h-16 px-10 rounded-2xl shadow-xl shadow-primary/20 text-lg font-black group">
-                  <Link href={`https://wa.me/5521988714006?text=Olá! Vi seus cases e gostaria de falar sobre um projeto.` as any} target="_blank">
-                    <MessageCircle size={24} className="mr-3 group-hover:scale-125 transition-transform" />
-                    {tc('button')}
-                  </Link>
+                <Button 
+                  size="lg" 
+                  onClick={() => open(undefined, 'cases_footer')} 
+                  className="w-full sm:w-auto h-16 px-10 rounded-2xl shadow-xl shadow-primary/20 text-lg font-black group"
+                >
+                  <MessageCircle size={24} className="mr-3 group-hover:scale-125 transition-transform" />
+                  {tc('button')}
                 </Button>
                 <Button size="lg" variant="secondary" asChild className="w-full sm:w-auto h-16 px-10 rounded-2xl border-border bg-background/50 backdrop-blur-md text-lg font-black group">
                   <Link href="/contact">

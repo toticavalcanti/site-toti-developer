@@ -1,8 +1,17 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import { 
+  qualificationSubmittedSchema, 
+  QualificationSubmitted 
+} from '@/lib/qualification-schema';
+import { 
+  projectTypeLabels, 
+  timelineLabels, 
+  budgetBrlLabels, 
+  budgetUsdLabels 
+} from '@/lib/qualification-labels';
 import TextInput from './TextInput';
 import TextArea from './TextArea';
 import Select from './Select';
@@ -11,42 +20,60 @@ import { Send, AlertCircle, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from '@/i18n/routing';
 import { aboutInfo } from '@/mockData';
-import { useTranslations } from 'next-intl';
-
-const contactSchema = z.object({
-  name: z.string().min(2, 'Min 2 chars'),
-  whatsapp: z.string().min(10, 'Min 10 digits'),
-  pilar: z.string().min(1, 'Required'),
-  message: z.string().min(10, 'Min 10 chars').max(500, 'Max 500 chars'),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
+import { useTranslations, useLocale } from 'next-intl';
 
 export default function ContactForm() {
   const t = useTranslations('contact.form');
-  const ts = useTranslations('services');
+  const tq = useTranslations('qualification');
+  const tc = useTranslations('ctas');
+  const locale = useLocale() as 'pt' | 'en';
+  
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const pilarOptions = [
-    { value: '', label: t('select') },
-    { value: 'landing-pages', label: ts('lp_title') },
-    { value: 'ecommerce', label: ts('store_title') },
-    { value: 'automation', label: ts('automation_title') },
-    { value: 'custom', label: ts('custom_title') },
+  const budgetLabels = locale === 'pt' ? budgetBrlLabels : budgetUsdLabels;
+
+  const projectOptions = [
+    { value: '', label: tq('project_not_sure') },
+    ...Object.entries(projectTypeLabels).map(([val, key]) => ({
+      value: val,
+      label: tq(key)
+    }))
+  ];
+
+  const budgetOptions = [
+    { value: '', label: tq('budget_undefined') },
+    ...Object.entries(budgetLabels).map(([val, key]) => ({
+      value: val,
+      label: tq(key)
+    }))
+  ];
+
+  const timelineOptions = [
+    { value: '', label: tq('timeline_no_rush') },
+    ...Object.entries(timelineLabels).map(([val, key]) => ({
+      value: val,
+      label: tq(key)
+    }))
   ];
 
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
     reset,
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
+  } = useForm<QualificationSubmitted>({
+    resolver: zodResolver(qualificationSubmittedSchema),
+    defaultValues: {
+      locale: locale,
+      source: 'contact_page',
+      stage: 'submitted'
+    }
   });
 
-  const onSubmit = async (data: ContactFormData) => {
+  const onSubmit = async (data: QualificationSubmitted) => {
     setIsSubmitting(true);
     setSubmitError(null);
     
@@ -74,8 +101,8 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="grid md:grid-cols-2 gap-6">
         <TextInput
-          label={`${t('name')} *`}
-          placeholder={t('name')}
+          label={`${tq('field_name')} *`}
+          placeholder="João Silva"
           {...register('name')}
           error={errors.name?.message}
         />
@@ -88,16 +115,61 @@ export default function ContactForm() {
         />
       </div>
 
-      <Select
-        label={`${t('project_type')} *`}
-        options={pilarOptions}
-        {...register('pilar')}
-        error={errors.pilar?.message}
+      <TextInput
+        label={`${tq('field_email')} *`}
+        placeholder="joao@exemplo.com"
+        type="email"
+        {...register('email')}
+        error={errors.email?.message}
+      />
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <Controller
+          name="projectType"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={`${tq('field_project_type')} *`}
+              options={projectOptions}
+              value={field.value}
+              onChange={field.onChange}
+              error={errors.projectType?.message}
+            />
+          )}
+        />
+
+        <Controller
+          name="budget"
+          control={control}
+          render={({ field }) => (
+            <Select
+              label={`${tq('field_budget')} *`}
+              options={budgetOptions}
+              value={field.value}
+              onChange={field.onChange}
+              error={errors.budget?.message}
+            />
+          )}
+        />
+      </div>
+
+      <Controller
+        name="timeline"
+        control={control}
+        render={({ field }) => (
+          <Select
+            label={`${tq('field_timeline')} *`}
+            options={timelineOptions}
+            value={field.value}
+            onChange={field.onChange}
+            error={errors.timeline?.message}
+          />
+        )}
       />
 
       <TextArea
-        label={`${t('message')} *`}
-        placeholder={t('how_can_help')}
+        label={tq('field_message')}
+        placeholder="..."
         rows={4}
         {...register('message')}
         error={errors.message?.message}
@@ -105,7 +177,7 @@ export default function ContactForm() {
 
       {submitSuccess && (
         <div className="p-4 rounded-xl bg-success/10 border border-success text-success text-sm font-bold flex items-center gap-2">
-          <span>{t('success')}</span>
+          <span>{tq('submit_success')}</span>
         </div>
       )}
 
@@ -118,23 +190,26 @@ export default function ContactForm() {
       <Button type="submit" size="lg" disabled={isSubmitting} className="w-full h-14 text-lg shadow-xl shadow-primary/20">
         {isSubmitting ? t('sending') : (
           <div className="flex items-center gap-2">
-            {t('send')} <Send size={20} />
+            {tq('submit_email')} <Send size={20} />
           </div>
         )}
       </Button>
 
-      <div className="text-center pt-6 border-t border-border/50 mt-6">
-         <p className="text-[10px] text-foreground-muted mb-4 uppercase tracking-[0.2em] font-black">
+      <div className="text-center pt-6 border-t border-border/50 mt-6 space-y-4">
+          <p className="text-[10px] text-foreground-muted uppercase tracking-[0.2em] font-black">
             {t('or')}
-         </p>
-         <Link
+          </p>
+          <Link
             href={`https://wa.me/${aboutInfo.whatsapp.replace(/\D/g, '')}` as any}
             target="_blank"
             className="inline-flex items-center gap-2 text-emerald-500 hover:text-emerald-400 transition-colors font-black text-sm uppercase tracking-wider"
           >
             <MessageCircle size={20} />
-            {t('chat_wa')}
+            {tc('prefer_whatsapp')}
           </Link>
+          <p className="text-[10px] uppercase tracking-widest text-foreground-muted font-bold">
+            {tq('availability')}
+          </p>
       </div>
     </form>
   );

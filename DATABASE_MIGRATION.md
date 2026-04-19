@@ -128,3 +128,44 @@ ALTER TABLE leads DROP COLUMN IF EXISTS last_agent_reply_at;
 ```
 
 Sistema continua funcionando normalmente sem as colunas (sem cache, mas funcional).
+
+---
+
+## Lead Qualification Funnel (Abril 2026)
+
+Para suportar o novo funil de qualificação e reduzir ruído no WhatsApp pessoal, foram adicionados campos de rastreamento de funil.
+
+### SQL para Adicionar Colunas
+
+Execute no Neon Console:
+
+```sql
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS stage VARCHAR(50) DEFAULT 'submitted';
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS source VARCHAR(100);
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS email VARCHAR(255);
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP DEFAULT NOW();
+```
+
+### Descrição dos Campos
+
+| Campo | Tipo | Propósito |
+|-------|------|-----------|
+| `stage` | VARCHAR | Estágio do lead: `submitted`, `whatsapp_handoff`, `modal_abandoned` |
+| `source` | VARCHAR | Origem do clique (ex: `hero`, `package_ecommerce`, `cta_section`) |
+| `email` | VARCHAR | E-mail capturado no formulário (opcional no WhatsApp handoff) |
+
+### Estágios Implementados
+
+1. **`submitted`**: Formulário preenchido e enviado via e-mail.
+2. **`whatsapp_handoff`**: Usuário preencheu qualificação mas optou por continuar no WhatsApp.
+3. **`modal_abandoned`**: Usuário abriu o modal, alterou algum campo, mas fechou sem concluir.
+
+### Verificação
+
+```sql
+SELECT phone, name, stage, source, updated_at
+FROM leads
+ORDER BY updated_at DESC
+LIMIT 10;
+```
+
