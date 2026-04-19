@@ -14,7 +14,7 @@ export default function FeaturedProjects() {
   const th = useTranslations('hero');
 
   return (
-    <section id="trabalhos" className="py-32 relative">
+    <section id="trabalhos" className="py-16 sm:py-20 relative">
       <Container>
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
           <SectionTitle

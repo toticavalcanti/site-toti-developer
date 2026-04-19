@@ -51,7 +51,7 @@ export default function ServicesOverview() {
   ];
 
   return (
-    <section className="py-32 relative">
+    <section className="py-16 sm:py-20 relative">
       <Container>
         <SectionTitle
           title={t('title')}

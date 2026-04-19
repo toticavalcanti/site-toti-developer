@@ -7,10 +7,10 @@
     "contact": "Contact"
   },
   "hero": {
-    "badge": "Software Engineering & Strategic Intelligence",
-    "title": "High-Performance",
-    "title_accent": "Digital Infrastructure for Global Operations",
-    "subtitle": "Strategic development of landing pages, e-commerce ecosystems, and bespoke AI automations. I deliver senior engineering stability with cost-optimized architecture for maximum profitability and scale, designing solutions ready for both Brazilian and international markets.",
+    "badge": "Software Architecture & AI Applied to Business",
+    "title": "Bespoke software architecture",
+    "title_accent": "for businesses operating at scale.",
+    "subtitle": "I develop landing pages, e-commerce ecosystems, and AI automations with the solidity of senior engineering — lean architecture, optimized costs, and scalability designed from the very first line of code. Solutions ready to operate from Brazil to the international market.",
     "cta_primary": "Request Quote",
     "cta_secondary": "View Projects"
   },
@@ -69,7 +69,7 @@
     "lp_name": "Pro Landing Page",
     "lp_desc": "Total focus on single product/service conversion.",
     "store_name": "E-commerce Lite",
-    "store_desc": "Your modern online store without fixed monthly fees.",
+    "store_desc": "A modern online store with lean, cost-efficient architecture.",
     "custom_name": "Custom System",
     "custom_desc": "Specific systems built with Next.js.",
     "price_on_request": "On request",
@@ -123,5 +123,13 @@
   },
   "footer": {
     "bio": "Software Engineering, Next.js Development and Smart Automations. Focusing on practical results for small businesses."
+  },
+  "tech": {
+    "eyebrow": "Trusted global stack",
+    "title_1": "The same technology powering",
+    "title_accent": "mission-critical operations",
+    "title_2": "at some of the world's largest companies.",
+    "subtitle": "Not a trend, not a template. This is the stack that billion-dollar companies choose to run products used by millions of people every day — and it's exactly what I deliver on every project.",
+    "disclaimer": "The companies listed publicly use these technologies in their products. They are not direct clients — they represent the industry standard of the stack."
   }
 }

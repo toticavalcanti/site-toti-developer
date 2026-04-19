@@ -11,6 +11,8 @@ import GridBackground from '@/components/GridBackground';
 import FloatingShapes from '@/components/FloatingShapes';
 import ParticleBackground from '@/components/ParticleBackground';
 import LenisProvider from '@/components/LenisProvider';
+import PremiumBackground from '@/components/ui/PremiumBackground';
+import CustomCursor from '@/components/ui/CustomCursor';
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -53,15 +55,9 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           <div className="relative min-h-screen flex flex-col">
-            <div
-              className="fixed inset-0 -z-10 pointer-events-none"
-              style={{ isolation: 'isolate', contain: 'strict' }}
-              aria-hidden="true"
-            >
-              <FloatingShapes />
-              <ParticleBackground />
-            </div>
             <LenisProvider>
+              <PremiumBackground />
+              <CustomCursor />
               <Navbar />
               <main className="flex-grow">{children}</main>
               <Footer />

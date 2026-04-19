@@ -12,7 +12,7 @@ export default function ContactSection() {
   const t = useTranslations('contact');
 
   return (
-    <section id="contato" className="py-32 relative border-t border-border/50">
+    <section id="contato" className="py-16 sm:py-20 relative border-t border-border/50">
       <Container>
         <div className="grid lg:grid-cols-2 gap-16">
           <ScrollReveal y={30}>

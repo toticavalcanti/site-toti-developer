@@ -41,7 +41,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="processo" className="py-32 relative">
+    <section id="processo" className="py-16 sm:py-20 relative">
       <Container>
         <SectionTitle
           title={t('title')}

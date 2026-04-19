@@ -15,7 +15,7 @@ export default function CTASection() {
   const whatsappUrl = `https://wa.me/${aboutInfo.whatsapp.replace(/\D/g, '')}?text=Olá! Vim pelo site e gostaria de saber mais sobre seu desenvolvimento de software.`;
 
   return (
-    <section className="py-32 relative">
+    <section className="py-16 sm:py-20 relative">
       <Container>
         <ScrollReveal
           y={40}

@@ -65,7 +65,7 @@ export default function PackagesSection() {
   ];
 
   return (
-    <section id="pacotes" className="py-32 relative">
+    <section id="pacotes" className="py-16 sm:py-20 relative">
       <Container>
         <SectionTitle
           title={t('title')}

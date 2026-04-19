@@ -1,48 +1,68 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { ReactNode } from 'react';
+import { cn } from '@/utils';
 
 interface TextRevealProps {
-  text: string;
+  children: string;
   className?: string;
   delay?: number;
-  stagger?: number;
-  as?: 'h1' | 'h2' | 'h3' | 'p' | 'span';
 }
 
-export default function TextReveal({
-  text,
-  className = '',
-  delay = 0,
-  stagger = 0.06,
-  as: Tag = 'h2',
-}: TextRevealProps) {
-  const shouldReduceMotion = useReducedMotion();
-  const words = text.split(' ');
+export default function TextReveal({ children, className, delay = 0 }: TextRevealProps) {
+  const words = children.split(' ');
 
-  if (shouldReduceMotion) {
-    return <Tag className={className}>{text}</Tag>;
-  }
+  const container = {
+    hidden: { opacity: 0 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      transition: { staggerChildren: 0.12, delayChildren: 0.04 * i + delay },
+    }),
+  };
+
+  const child = {
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        damping: 25,
+        stiffness: 100,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      y: 20,
+      transition: {
+        type: 'spring',
+        damping: 25,
+        stiffness: 100,
+      },
+    },
+  };
 
   return (
-    <Tag className={className}>
-      {words.map((word, i) => (
-        <span key={i} className="inline-block overflow-hidden pb-[0.1em] mr-[0.25em]">
+    <motion.div
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className={cn("inline-flex flex-wrap", className)}
+    >
+      {words.map((word, index) => (
+        <span
+          key={index}
+          className="relative inline-block overflow-hidden mr-[0.2em]"
+        >
           <motion.span
+            variants={child}
             className="inline-block"
-            initial={{ y: '110%' }}
-            whileInView={{ y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{
-              duration: 0.8,
-              delay: delay + i * stagger,
-              ease: [0.22, 1, 0.36, 1],
-            }}
           >
             {word}
           </motion.span>
         </span>
       ))}
-    </Tag>
+    </motion.div>
   );
 }

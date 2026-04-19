@@ -7,10 +7,10 @@
     "contact": "Contato"
   },
   "hero": {
-    "badge": "Engenharia de Software & Inteligência Estratégica",
-    "title": "Infraestrutura Digital",
-    "title_accent": "de Alta Performance para Operações Globais",
-    "subtitle": "Desenvolvimento estratégico de landing pages, ecossistemas de e-commerce e automações com IA sob medida. Entrego a solidez da engenharia sênior com arquitetura de custos otimizada para máxima lucratividade e escala, projetando soluções prontas para o mercado brasileiro e internacional.",
+    "badge": "Arquitetura de Software & IA Aplicada ao Negócio",
+    "title": "Arquitetura de software sob medida",
+    "title_accent": "para negócios que operam em escala.",
+    "subtitle": "Desenvolvo landing pages, ecossistemas de e-commerce e automações com IA com a solidez da engenharia sênior — arquitetura enxuta, custos otimizados e escalabilidade projetada desde a primeira linha de código. Soluções prontas para operar do Brasil ao mercado internacional.",
     "cta_primary": "Solicitar Orçamento",
     "cta_secondary": "Ver Projetos"
   },
@@ -69,7 +69,7 @@
     "lp_name": "Landing Page Pro",
     "lp_desc": "Foco total em conversão de um único produto/serviço.",
     "store_name": "E-commerce Lite",
-    "store_desc": "Sua loja online moderna sem taxas fixas mensais.",
+    "store_desc": "Sua loja online moderna, com arquitetura de custo otimizado.",
     "custom_name": "Custom System",
     "custom_desc": "Sistemas específicos construídos com Next.js.",
     "price_on_request": "Sob consulta",
@@ -123,5 +123,13 @@
   },
   "footer": {
     "bio": "Engenharia de Software, Desenvolvimento Next.js e Automações Inteligentes. Focando em resultados práticos para pequenos negócios."
+  },
+  "tech": {
+    "eyebrow": "Stack de confiança global",
+    "title_1": "A mesma tecnologia que roda em",
+    "title_accent": "operações críticas",
+    "title_2": "das maiores empresas do mundo.",
+    "subtitle": "Não é moda passageira nem template pronto. É a stack que empresas bilionárias escolhem para sustentar produtos acessados por milhões de pessoas todos os dias — e é exatamente o que entrego em cada projeto.",
+    "disclaimer": "As empresas listadas utilizam publicamente essas tecnologias em seus produtos. Não representam clientes atendidos diretamente — representam o padrão técnico da stack."
   }
 }

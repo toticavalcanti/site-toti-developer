@@ -29,7 +29,7 @@ export default function AboutPreview() {
   ];
 
   return (
-    <section id="sobre" className="py-32 relative overflow-hidden">
+    <section id="sobre" className="py-16 sm:py-20 relative overflow-hidden">
       <Container>
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <ScrollReveal
