@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import type { ZAPIWebhookPayload } from '@/types/whatsapp';
 import { processMessage } from '@/lib/agent-processor';
 import { sendMessage } from '@/lib/zapi';
-import { getLeadByPhone, upsertLead } from '@/lib/leads';
+import { getLeadByIdentifier, upsertLead } from '@/lib/leads';
 import { normalizeText } from '@/lib/cost-controls';
 
 export const runtime = 'nodejs';
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
         // IDEMPOTENCY CHECK - Prevent duplicate processing
         // ============================================
         if (messageId) {
-            const lead = await getLeadByPhone(phone);
+            const lead = await getLeadByIdentifier({ phone });
             if (lead && lead.last_message_id === messageId) {
                 console.log('[Webhook] Duplicate messageId detected - ignoring');
                 return NextResponse.json({
@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
         // ANTI-SPAM CACHE - Avoid unnecessary OpenAI calls
         // ============================================
         try {
-            const lead = await getLeadByPhone(phone);
+            const lead = await getLeadByIdentifier({ phone });
             const now = new Date();
 
             // 2.1) COOLDOWN ANTI-SPAM (5 seconds)

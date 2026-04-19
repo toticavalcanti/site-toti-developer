@@ -1,5 +1,5 @@
 import type { ConversationMessage, LeadData } from '../types/whatsapp';
-import { getLeadByPhone, upsertLead, addMessageToHistory } from './leads';
+import { getLeadByIdentifier, upsertLead, addMessageToHistory } from './leads';
 import { callLLM } from './llm'; // New LLM router
 import { SYSTEM_PROMPT } from './prompts';
 import { executeActions } from './action-executor';
@@ -25,7 +25,7 @@ export async function processMessage(
         console.log('[Agent] Processing message from:', phone);
 
         // Get or create lead
-        let lead = await getLeadByPhone(phone);
+        let lead = await getLeadByIdentifier({ phone });
 
         if (!lead) {
             // Create new lead

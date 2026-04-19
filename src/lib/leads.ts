@@ -171,7 +171,7 @@ export async function addMessageToHistory(
     phone: string,
     message: ConversationMessage
 ): Promise<void> {
-    const lead = await getLeadByPhone(phone);
+    const lead = await getLeadByIdentifier({ phone });
 
     if (!lead) {
         throw new Error(`Lead with phone ${phone} not found`);
