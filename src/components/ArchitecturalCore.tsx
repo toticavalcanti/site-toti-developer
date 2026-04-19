@@ -21,13 +21,13 @@ export default function ArchitecturalCore() {
     let mouse = { x: 0, y: 0 };
 
     class Particle {
-      x: number;
-      y: number;
-      z: number;
-      vx: number;
-      vy: number;
-      vz: number;
-      radius: number;
+      x!: number;
+      y!: number;
+      z!: number;
+      vx!: number;
+      vy!: number;
+      vz!: number;
+      radius!: number;
 
       constructor() {
         this.reset();
