@@ -7,11 +7,13 @@ import { aboutInfo } from '@/mockData';
 import { Link } from '@/i18n/routing';
 import { Check, ArrowRight, MessageCircle, Zap, Code2, Shield, Globe } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
+import { useQualification } from '@/lib/qualification-context';
+import { ProjectType } from '@/lib/qualification-schema';
 
 export default function ServicosPage() {
   const t = useTranslations();
   const locale = useLocale();
-  const whatsappBase = `https://wa.me/${aboutInfo.whatsapp.replace(/\D/g, '')}`;
+  const { open } = useQualification();
 
   const pillars = [
     {
@@ -131,11 +133,9 @@ export default function ServicosPage() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Button asChild>
-                      <Link href={`${whatsappBase}?text=Olá! Me interessei pelo serviço de ${pillar.title}.` as any} target="_blank">
-                        <MessageCircle size={20} className="mr-2" />
-                         {locale === 'pt' ? 'Solicitar Proposta' : 'Request Proposal'}
-                      </Link>
+                    <Button onClick={() => open(pillar.id === 'landing-pages' ? 'landing' : pillar.id as ProjectType, `services_${pillar.id}`)}>
+                      <MessageCircle size={20} className="mr-2" />
+                      {locale === 'pt' ? 'Solicitar Proposta' : 'Request Proposal'}
                     </Button>
                     <Button asChild variant="outline">
                       <Link href={`/work?p=${pillar.id}` as any}>
@@ -184,7 +184,7 @@ export default function ServicosPage() {
               },
               {
                 q: locale === 'pt' ? 'Qual o prazo médio de entrega?' : 'What is the average delivery time?',
-                a: locale === 'pt' ? 'Landing Pages em 7-10 dias. Sistemas e E-commerces variam entre 3-6 semanas.' : 'Landing Pages in 7-10 days. Systems and E-commerces vary between 3-6 weeks.'
+                a: locale === 'pt' ? 'Landing Pages em 7-10 dias. Sistemas e E-commerces variam entre 3-4 semanas.' : 'Landing Pages in 7-10 days. Systems and E-commerces vary between 3-4 weeks.'
               },
               {
                 q: locale === 'pt' ? 'O suporte pós-entrega está incluso?' : 'Is post-delivery support included?',

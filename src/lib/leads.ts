@@ -4,27 +4,34 @@ import type { LeadData, ConversationMessage, LeadStatus } from '../types/whatsap
 /**
  * Get lead by phone number
  */
-export async function getLeadByPhone(phone: string): Promise<LeadData | null> {
-    const result = await query<LeadData>(
-        `SELECT * FROM leads WHERE phone = $1`,
-        [phone]
-    );
+export async function getLeadByIdentifier(id: { phone?: string; email?: string }): Promise<LeadData | null> {
+    if (!id.phone && !id.email) return null;
 
-    if (result.rows.length === 0) {
-        return null;
+    let sql = 'SELECT * FROM leads WHERE ';
+    const params: string[] = [];
+    if (id.phone) {
+        sql += 'phone = $1';
+        params.push(id.phone);
+    } else {
+        sql += 'email = $1';
+        params.push(id.email!);
     }
 
-    return result.rows[0];
+    const result = await query<LeadData>(sql, params);
+    return result.rows.length > 0 ? result.rows[0] : null;
 }
 
 /**
  * Create or update lead (UPSERT)
  */
 export async function upsertLead(
-    phone: string,
+    identifier: string, // phone or email or 'anonymous'
     patch: Partial<LeadData>
 ): Promise<LeadData> {
-    const existing = await getLeadByPhone(phone);
+    // Try to find by identifier (check if it looks like email or phone)
+    const isEmail = identifier.includes('@');
+    const lookup = isEmail ? { email: identifier } : { phone: identifier };
+    const existing = await getLeadByIdentifier(lookup);
 
     if (existing) {
         // UPDATE existing lead
@@ -35,6 +42,14 @@ export async function upsertLead(
         if (patch.name !== undefined) {
             updates.push(`name = $${paramIndex++}`);
             values.push(patch.name);
+        }
+        if (patch.email !== undefined) {
+            updates.push(`email = $${paramIndex++}`);
+            values.push(patch.email);
+        }
+        if (patch.phone !== undefined) {
+            updates.push(`phone = $${paramIndex++}`);
+            values.push(patch.phone);
         }
         if (patch.service_interest !== undefined) {
             updates.push(`service_interest = $${paramIndex++}`);
@@ -51,6 +66,14 @@ export async function upsertLead(
         if (patch.notes !== undefined) {
             updates.push(`notes = $${paramIndex++}`);
             values.push(patch.notes);
+        }
+        if (patch.source !== undefined) {
+            updates.push(`source = $${paramIndex++}`);
+            values.push(patch.source);
+        }
+        if (patch.stage !== undefined) {
+            updates.push(`stage = $${paramIndex++}`);
+            values.push(patch.stage);
         }
         if (patch.status !== undefined) {
             updates.push(`status = $${paramIndex++}`);
@@ -82,43 +105,54 @@ export async function upsertLead(
         }
 
         updates.push(`updated_at = NOW()`);
-        values.push(phone); // WHERE condition
+        
+        // Final values array for WHERE
+        values.push(existing.phone || existing.email);
 
         const sql = `
-      UPDATE leads 
-      SET ${updates.join(', ')}
-      WHERE phone = $${paramIndex}
-      RETURNING *
-    `;
+          UPDATE leads 
+          SET ${updates.join(', ')}
+          WHERE ${existing.phone ? 'phone' : 'email'} = $${paramIndex}
+          RETURNING *
+        `;
 
         const result = await query<LeadData>(sql, values);
         return result.rows[0];
     } else {
         // INSERT new lead
+        const finalPhone = isEmail ? (patch.phone || null) : identifier;
+        const finalEmail = isEmail ? identifier : (patch.email || null);
+
         const sql = `
-      INSERT INTO leads (
-        phone, 
-        name, 
-        service_interest, 
-        desired_deadline, 
-        budget_range, 
-        notes, 
-        status, 
-        conversation_history,
-        last_message_id,
-        created_at,
-        updated_at
-      )
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW(), NOW())
-      RETURNING *
-    `;
+          INSERT INTO leads (
+            phone, 
+            name,
+            email, 
+            service_interest, 
+            desired_deadline, 
+            budget_range,
+            source,
+            stage, 
+            notes, 
+            status, 
+            conversation_history,
+            last_message_id,
+            created_at,
+            updated_at
+          )
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, NOW(), NOW())
+          RETURNING *
+        `;
 
         const values = [
-            phone,
+            finalPhone,
             patch.name || null,
+            finalEmail,
             patch.service_interest || null,
             patch.desired_deadline || null,
             patch.budget_range || null,
+            patch.source || null,
+            patch.stage || 'submitted',
             patch.notes || null,
             patch.status || 'new',
             JSON.stringify(patch.conversation_history || []),

@@ -13,10 +13,13 @@ const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
   Instagram,
 };
 
+import { useQualification } from '@/lib/qualification-context';
+
 export default function Footer() {
   const tn = useTranslations('nav');
   const ts = useTranslations('services');
   const tf = useTranslations('footer');
+  const { open } = useQualification();
 
   const footerLinks = [
     {
@@ -40,7 +43,7 @@ export default function Footer() {
     {
       title: tn('contact'),
       links: [
-        { label: 'WhatsApp', href: `https://wa.me/5521988714006` },
+        { label: 'WhatsApp', href: '#', onClick: () => open(undefined, 'footer') },
         { label: 'Linkedin', href: 'https://linkedin.com/in/toticavalcanti' },
         { label: 'Email', href: 'mailto:toticavalcanti@gmail.com' },
       ],
@@ -91,12 +94,21 @@ export default function Footer() {
               <ul className="space-y-5">
                 {section.links.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      href={link.href as any}
-                      className="text-foreground-secondary hover:text-primary transition-all duration-300 font-bold hover:translate-x-1 inline-block"
-                    >
-                      {link.label}
-                    </Link>
+                    {link.onClick ? (
+                      <button
+                        onClick={link.onClick}
+                        className="text-foreground-secondary hover:text-primary transition-all duration-300 font-bold hover:translate-x-1 inline-block text-left"
+                      >
+                        {link.label}
+                      </button>
+                    ) : (
+                      <Link
+                        href={link.href as any}
+                        className="text-foreground-secondary hover:text-primary transition-all duration-300 font-bold hover:translate-x-1 inline-block"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

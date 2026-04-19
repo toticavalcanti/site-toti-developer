@@ -9,10 +9,11 @@ import MagneticButton from './ui/MagneticButton';
 import AnimatedButton from './ui/AnimatedButton';
 import TextReveal from './ui/TextReveal';
 import ArchitecturalCore from './ArchitecturalCore';
+import { useQualification } from '@/lib/qualification-context';
 
 export default function HeroSection() {
   const t = useTranslations('hero');
-  const whatsappUrl = `https://wa.me/${aboutInfo.whatsapp.replace(/\D/g, '')}?text=Olá! Vim pelo site e gostaria de um orçamento.`;
+  const { open } = useQualification();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -87,12 +88,12 @@ export default function HeroSection() {
             className="flex flex-col sm:flex-row items-center justify-center gap-8 w-full px-4"
           >
             <MagneticButton>
-              <Link href={whatsappUrl as any} target="_blank" className="w-full sm:w-auto">
+              <div className="w-full sm:w-auto overflow-visible cursor-pointer" onClick={() => open(undefined, 'hero')}>
                 <AnimatedButton variant="primary" size="lg" className="w-full sm:w-72 h-16 rounded-full tracking-wider shadow-2xl shadow-primary/10 group overflow-hidden">
                   <span className="relative z-10">{t('cta_primary')}</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                 </AnimatedButton>
-              </Link>
+              </div>
             </MagneticButton>
             
             <MagneticButton>

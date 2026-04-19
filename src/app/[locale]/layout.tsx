@@ -13,6 +13,8 @@ import ParticleBackground from '@/components/ParticleBackground';
 import LenisProvider from '@/components/LenisProvider';
 import PremiumBackground from '@/components/ui/PremiumBackground';
 import CustomCursor from '@/components/ui/CustomCursor';
+import { QualificationProvider } from '@/lib/qualification-context';
+import QualificationModal from '@/components/QualificationModal';
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -54,15 +56,18 @@ export default async function RootLayout({
         className={`${spaceGrotesk.variable} ${inter.variable} antialiased selection:bg-foreground selection:text-background`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <div className="relative min-h-screen flex flex-col">
-            <LenisProvider>
-              <PremiumBackground />
-              <CustomCursor />
-              <Navbar />
-              <main className="flex-grow">{children}</main>
-              <Footer />
-            </LenisProvider>
-          </div>
+          <QualificationProvider>
+            <div className="relative min-h-screen flex flex-col">
+              <LenisProvider>
+                <PremiumBackground />
+                <CustomCursor />
+                <Navbar />
+                <main className="flex-grow">{children}</main>
+                <Footer />
+              </LenisProvider>
+            </div>
+            <QualificationModal />
+          </QualificationProvider>
         </NextIntlClientProvider>
       </body>
     </html>

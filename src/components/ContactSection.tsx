@@ -7,9 +7,11 @@ import { Mail, MessageCircle, MapPin } from 'lucide-react';
 import { aboutInfo } from '@/mockData';
 import { useTranslations } from 'next-intl';
 import ScrollReveal from './ui/ScrollReveal';
+import { useQualification } from '@/lib/qualification-context';
 
 export default function ContactSection() {
   const t = useTranslations('contact');
+  const { open } = useQualification();
 
   return (
     <section id="contato" className="py-16 sm:py-20 relative border-t border-border/50">
@@ -35,15 +37,15 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-5 group">
+              <div className="flex items-center gap-5 group cursor-pointer" onClick={() => open(undefined, 'contact_info')}>
                 <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 transition-transform group-hover:scale-110 shadow-lg shadow-emerald-500/5">
                   <MessageCircle size={22} />
                 </div>
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-widest text-foreground-muted mb-1">WhatsApp</p>
-                  <a href={`https://wa.me/${aboutInfo.whatsapp.replace(/\D/g, '')}`} target="_blank" className="text-lg font-semibold hover:text-emerald-500 transition-colors tracking-tight">
+                  <span className="text-lg font-semibold hover:text-emerald-500 transition-colors tracking-tight">
                     {aboutInfo.whatsapp}
-                  </a>
+                  </span>
                 </div>
               </div>
 

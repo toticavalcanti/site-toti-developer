@@ -9,11 +9,14 @@ export type LeadStatus =
 
 export interface LeadData {
     id?: string;
-    phone: string;
+    phone?: string;
     name?: string | null;
+    email?: string | null;
     service_interest?: string | null;
     desired_deadline?: string | null;
     budget_range?: string | null;
+    source?: string | null;
+    stage?: 'submitted' | 'whatsapp_handoff' | 'modal_abandoned';
     notes?: string | null;
     status: LeadStatus;
     conversation_history?: ConversationMessage[];
