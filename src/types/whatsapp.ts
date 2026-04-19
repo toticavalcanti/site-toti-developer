@@ -9,7 +9,7 @@ export type LeadStatus =
 
 export interface LeadData {
     id?: string;
-    phone: string;
+    phone?: string | null;
     name?: string | null;
     service_interest?: string | null;
     desired_deadline?: string | null;
