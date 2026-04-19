@@ -41,29 +41,23 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
         >
-          {/* Badge - GIANT BUT CLEAN */}
+          {/* Badge */}
           <motion.div
             variants={itemVariants}
-            className="mb-12 px-10 py-5 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-md"
+            className="mb-8 px-5 py-2 rounded-full border border-primary/20 bg-primary/10 backdrop-blur-md"
           >
-            <span className="text-sm sm:text-lg md:text-xl font-medium uppercase tracking-[0.2em] text-primary/90">
+            <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary/90">
               {t('badge')}
             </span>
           </motion.div>
 
-          {/* Title - Elegant & Authoritative Scale */}
-          <div className="mb-12">
+          {/* Title */}
+          <div className="mb-8">
             <motion.h1 
               variants={itemVariants}
-              className="text-6xl sm:text-7xl md:text-8xl font-light leading-[1] tracking-tight text-white mb-2"
+              className="text-4xl sm:text-5xl md:text-6xl font-light leading-[1.1] tracking-tight text-white"
             >
-              {t('title')}
-            </motion.h1>
-            <motion.h1 
-              variants={itemVariants}
-              className="text-6xl sm:text-7xl md:text-8xl font-light leading-[1] tracking-tight text-white/30"
-            >
-              {t('title_accent')}
+              {t('title')} {t('title_accent')}
             </motion.h1>
           </div>
 
@@ -82,14 +76,14 @@ export default function HeroSection() {
           >
             <MagneticButton>
               <Link href={whatsappUrl as any} target="_blank">
-                <AnimatedButton variant="primary" size="lg" className="w-[280px] h-16 rounded-full tracking-wide">
+                <AnimatedButton variant="primary" size="lg" className="w-72 h-16 rounded-full tracking-wide whitespace-nowrap">
                   {t('cta_primary')}
                 </AnimatedButton>
               </Link>
             </MagneticButton>
             <MagneticButton>
               <Link href="/cases">
-                <AnimatedButton variant="outline" size="lg" className="w-[280px] h-16 rounded-full border-primary/40 text-primary/90 hover:text-white hover:bg-primary/20 tracking-wide">
+                <AnimatedButton variant="outline" size="lg" className="w-72 h-16 rounded-full border-primary/40 text-primary/90 hover:text-white hover:bg-primary/20 tracking-wide whitespace-nowrap">
                   {t('cta_secondary')}
                 </AnimatedButton>
               </Link>

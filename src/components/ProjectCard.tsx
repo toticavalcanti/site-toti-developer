@@ -5,6 +5,9 @@ import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import TiltCard from './ui/TiltCard';
+import { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { cn } from '@/utils';
 
 interface ProjectCardProps {
   project: Case;
@@ -13,6 +16,26 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
   const t = useTranslations('work');
+  const [isHovered, setIsHovered] = useState(false);
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
+
+  const images = [
+    project.imagePath,
+    project.imagePath.replace('cover.jpg', 'preview-1.jpg'),
+    project.imagePath.replace('cover.jpg', 'preview-2.jpg')
+  ];
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isHovered) {
+      interval = setInterval(() => {
+        setCurrentImgIndex((prev) => (prev + 1) % images.length);
+      }, 1500);
+    } else {
+      setCurrentImgIndex(0);
+    }
+    return () => clearInterval(interval);
+  }, [isHovered, images.length]);
 
   const statusLabels: Record<string, string> = {
     production: t('production'),
@@ -30,7 +53,11 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
 
   return (
     <TiltCard max={3} scale={1.02} className="h-full">
-      <div className="group relative flex flex-col h-full bg-[#0d0d0d] rounded-2xl overflow-hidden border border-white/[0.03] hover:border-primary/30 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]">
+      <div 
+        className="group relative flex flex-col h-full bg-[#0d0d0d] rounded-2xl overflow-hidden border border-white/[0.03] hover:border-primary/30 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         
         {/* Browser Top - Minimalist Dark */}
         <div className="h-7 bg-white/[0.02] border-b border-white/[0.05] flex items-center px-4 gap-1.5 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
@@ -44,28 +71,51 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           </div>
         </div>
 
-        {/* Hero Image - Horizontal Aspect with Scroll on Hover */}
-        <div className="relative aspect-[16/11] overflow-hidden bg-[#111]">
-          <div className="absolute inset-0 transition-transform duration-[4000ms] ease-linear group-hover:-translate-y-1/2">
-            <Image
-              src={project.imagePath}
-              alt={project.name}
-              fill
-              className="object-cover object-top"
-              priority={index < 3}
-            />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+        {/* Hero Image - 16:9 Aspect for full horizontal visibility */}
+        <div className="relative aspect-video overflow-hidden bg-[#050505]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentImgIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={images[currentImgIndex]}
+                alt={project.name}
+                fill
+                className="object-contain transition-transform duration-700 group-hover:scale-105"
+                priority={index < 3}
+              />
+            </motion.div>
+          </AnimatePresence>
           
-          <div className="absolute top-4 right-4">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+          
+          <div className="absolute top-4 right-4 z-20">
             <div className={`px-3 py-1 rounded-full text-[7px] font-black uppercase tracking-[0.25em] border border-current backdrop-blur-3xl shadow-2xl ${statusColors[project.status]}`}>
               {statusLabels[project.status]}
             </div>
           </div>
+
+          {/* Image indicator dots */}
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            {images.map((_, i) => (
+              <div 
+                key={i} 
+                className={cn(
+                  "w-1 h-1 rounded-full transition-all duration-300",
+                  i === currentImgIndex ? "w-3 bg-primary" : "bg-white/20"
+                )}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Content Body - Editorial & Compact */}
-        <div className="p-8 pb-10 flex flex-col flex-grow bg-gradient-to-b from-transparent to-black/40">
+        <div className="p-8 pb-10 flex flex-col flex-grow bg-gradient-to-b from-transparent to-black/60">
           <div className="flex flex-wrap gap-3 mb-6">
             {project.tags.slice(0, 2).map((tag) => (
               <span key={tag} className="text-[8px] font-black uppercase tracking-[0.2em] text-white/20">
@@ -80,7 +130,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
 
           {/* Action Link - Pure High-End interaction */}
           <div className="mt-auto">
-            {project.liveUrl && (
+            {project.liveUrl ? (
               <a 
                 href={project.liveUrl} 
                 target="_blank" 
@@ -91,6 +141,10 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
                 <div className="w-8 h-[1px] bg-primary/30 group-hover/link:w-16 group-hover/link:bg-white transition-all duration-500" />
                 <ArrowRight size={14} className="-translate-x-2 group-hover/link:translate-x-0 transition-transform duration-500" />
               </a>
+            ) : (
+                <div className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
+                  PRIVATE REPO
+                </div>
             )}
           </div>
         </div>

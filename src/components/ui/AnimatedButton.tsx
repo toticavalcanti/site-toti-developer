@@ -10,7 +10,7 @@ interface AnimatedButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantStyles = {
-  primary: 'bg-primary text-white shadow-xl shadow-primary/10 hover:shadow-primary/30 hover:bg-emerald-600',
+  primary: 'bg-gradient-to-r from-primary to-secondary text-white shadow-xl shadow-primary/20 hover:shadow-secondary/30',
   secondary: 'bg-white/5 text-white border border-white/10 hover:bg-white/10 hover:border-white/20',
   outline: 'bg-transparent text-white border border-white/20 hover:bg-white/5 hover:border-white/40',
 };
