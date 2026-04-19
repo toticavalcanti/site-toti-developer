@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/utils';
-import { motion } from 'framer-motion';
+import ScrollReveal from './ui/ScrollReveal';
 
 interface SectionTitleProps {
   title: string;
@@ -17,26 +17,22 @@ export default function SectionTitle({
   className,
 }: SectionTitleProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+    <ScrollReveal
       className={cn(
         'mb-16 lg:mb-20',
-        centered ? 'text-center' : '',
+        centered ? 'text-center flex flex-col items-center' : '',
         className
       )}
     >
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-5 md:mb-6">
-        <span className="gradient-text">{title}</span>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-6 tracking-tight">
+        {title}
       </h2>
       {subtitle && (
-        <p className="text-base sm:text-lg md:text-xl text-foreground-secondary max-w-3xl">
+        <p className="text-base sm:text-lg text-foreground-secondary max-w-3xl leading-relaxed">
           {subtitle}
         </p>
       )}
-      <div className="mt-6 h-1 w-20 bg-gradient-to-r from-primary to-secondary rounded-full" />
-    </motion.div>
+      <div className="mt-8 h-1 w-24 bg-primary rounded-full" />
+    </ScrollReveal>
   );
 }

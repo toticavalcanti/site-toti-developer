@@ -7,12 +7,12 @@
     "contact": "Contact"
   },
   "hero": {
-    "badge": "Available for new projects",
-    "title": "Sales Machines built with ",
-    "title_accent": "Next.js & AI",
-    "subtitle": "I don't just build websites. I develop high-performance systems designed to convert leads into real profit.",
-    "cta_primary": "Secure my spot",
-    "cta_secondary": "View Cases"
+    "badge": "High-Performance Architecture: Maximum impact, minimum infrastructure",
+    "title": "Custom software,",
+    "title_accent": "built for scale.",
+    "subtitle": "I develop landing pages, e-commerces, and AI automations for businesses looking for a solid operation — combining strategic architecture with zero-cost infrastructure.",
+    "cta_primary": "Strategic consulting",
+    "cta_secondary": "See cases"
   },
   "stats": {
     "leads": "Leads Generated",
@@ -75,9 +75,27 @@
     "price_on_request": "On request",
     "popular": "Popular",
     "features": {
-      "lp": ["Custom UI/UX", "Conversion Optimization", "Responsive Design (Mobile First)", "Basic SEO", "WhatsApp Integration"],
-      "store": ["Manageable Catalog", "WhatsApp Flow Checkout", "Fast Product Pages", "Optional Bilingual Design", "High Performance Hosting"],
-      "custom": ["Bespoke Architecture", "API Integration", "Admin Dashboard", "Bank-grade Security", "Guaranteed Scalability"]
+      "lp": [
+        "Custom UI/UX",
+        "Conversion Optimization",
+        "Responsive Design (Mobile First)",
+        "Basic SEO",
+        "WhatsApp Integration"
+      ],
+      "store": [
+        "Manageable Catalog",
+        "WhatsApp Flow Checkout",
+        "Fast Product Pages",
+        "Optional Bilingual Design",
+        "High Performance Hosting"
+      ],
+      "custom": [
+        "Bespoke Architecture",
+        "API Integration",
+        "Admin Dashboard",
+        "Bank-grade Security",
+        "Guaranteed Scalability"
+      ]
     }
   },
   "cta": {

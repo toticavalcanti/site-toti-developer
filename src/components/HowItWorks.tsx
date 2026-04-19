@@ -3,8 +3,8 @@
 import Container from './Container';
 import SectionTitle from './SectionTitle';
 import { Search, MessageSquare, Rocket, BarChart3 } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import ScrollReveal from './ui/ScrollReveal';
 
 export default function HowItWorks() {
   const t = useTranslations('process');
@@ -36,12 +36,12 @@ export default function HowItWorks() {
       title: t('step4_title'),
       description: t('step4_desc'),
       icon: BarChart3,
-      color: 'from-accent to-success',
+      color: 'from-emerald-400 to-teal-500',
     },
   ];
 
   return (
-    <section id="processo" className="py-32 bg-background-secondary/20 relative">
+    <section id="processo" className="py-32 relative">
       <Container>
         <SectionTitle
           title={t('title')}
@@ -50,35 +50,32 @@ export default function HowItWorks() {
           className="mx-auto"
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-20 relative">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mt-20 relative">
           {/* Connection line for desktop */}
-          <div className="hidden lg:block absolute top-[60px] left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20 -z-10" />
+          <div className="hidden lg:block absolute top-[50px] left-[10%] right-[10%] h-[1px] bg-border/50 -z-10" />
 
           {steps.map((step, index) => (
-            <motion.div
+            <ScrollReveal
               key={step.step}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.8 }}
-              viewport={{ once: true }}
+              delay={index * 0.15}
               className="relative group"
             >
               <div className="flex flex-col items-center text-center">
-                <div className={`w-28 h-28 rounded-[2.5rem] bg-background-secondary border-2 border-border flex items-center justify-center mb-8 relative group-hover:border-primary transition-all duration-500 shadow-xl group-hover:shadow-primary/10 group-hover:-translate-y-2`}>
-                   <div className="absolute -top-3 -right-3 w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-black text-xs shadow-lg shadow-primary/20">
+                <div className="w-24 h-24 rounded-2xl bg-background-secondary border border-border flex items-center justify-center mb-8 relative group-hover:border-primary/50 transition-all duration-500 shadow-xl group-hover:-translate-y-2">
+                   <div className="absolute -top-3 -right-3 w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center font-bold text-xs shadow-lg shadow-primary/20">
                     {step.step}
                   </div>
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg shadow-black/20`}>
-                    <step.icon size={28} className="text-white" />
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg shadow-black/20`}>
+                    <step.icon size={22} className="text-white" />
                   </div>
                 </div>
 
-                <h3 className="text-xl font-black mb-4 tracking-tight group-hover:text-primary transition-colors uppercase">{step.title}</h3>
-                <p className="text-foreground-secondary text-base leading-relaxed max-w-[240px] font-medium">
+                <h3 className="text-xl font-semibold mb-3 tracking-tight group-hover:text-primary transition-colors">{step.title}</h3>
+                <p className="text-foreground-secondary text-sm leading-relaxed max-w-[240px]">
                   {step.description}
                 </p>
               </div>
-            </motion.div>
+            </ScrollReveal>
           ))}
         </div>
       </Container>

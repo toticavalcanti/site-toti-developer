@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, usePathname, useRouter } from '@/i18n/routing';
 import Container from './Container';
 import Button from './Button';
@@ -12,6 +12,8 @@ import { useTranslations, useLocale } from 'next-intl';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const lastScrollY = useRef(0);
   const pathname = usePathname();
   const router = useRouter();
   const locale = useLocale();
@@ -30,10 +32,18 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 20);
 
-    window.addEventListener('scroll', handleScroll);
+      // esconde no scroll down, mostra no scroll up
+      if (currentScrollY > 120 && currentScrollY > lastScrollY.current) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -42,16 +52,17 @@ export default function Navbar() {
   }, [pathname]);
 
   return (
-    <nav
+    <motion.nav
+      initial={{ y: 0 }}
+      animate={{ y: isHidden ? -100 : 0 }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
-        isScrolled
-          ? 'glass-effect bg-background/80 py-3 shadow-2xl shadow-primary/5'
-          : 'bg-transparent py-5'
+        'fixed top-0 left-0 right-0 z-50 transition-colors duration-300',
+        isScrolled ? 'backdrop-blur-xl bg-background/70 border-b border-border/50' : 'bg-transparent'
       )}
     >
       <Container>
-        <div className="flex items-center justify-between h-14">
+        <div className="flex items-center justify-between h-14 py-8">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center group-hover:rotate-12 transition-transform shadow-lg shadow-primary/20">
@@ -178,6 +189,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 }

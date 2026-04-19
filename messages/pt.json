@@ -1,18 +1,18 @@
 {
   "nav": {
     "home": "Início",
-    "work": "Cases",
+    "work": "Casos",
     "services": "Serviços",
     "process": "Processo",
     "contact": "Contato"
   },
   "hero": {
-    "badge": "Disponível para novos projetos",
-    "title": "Máquinas de Vendas em ",
-    "title_accent": "Next.js & IA",
-    "subtitle": "Não construo apenas sites. Desenvolvo sistemas de alta performance focados em converter leads em lucro real.",
-    "cta_primary": "Garantir minha vaga",
-    "cta_secondary": "Ver Cases"
+    "badge": "Ativos Digitais de Alta Performance para Operações Globais.",
+    "title": "Engenharia de Software",
+    "title_accent": "para Operações Globais.",
+    "subtitle": "Desenvolvo landing pages, e-commerces e automações com IA que unem engenharia de software sênior a uma infraestrutura de custo otimizado. Soluções sólidas para escalar seu negócio.",
+    "cta_primary": "Agendar Consultoria Estratégica",
+    "cta_secondary": "Ver casos de sucesso"
   },
   "stats": {
     "leads": "Leads Gerados",
@@ -33,7 +33,7 @@
     "custom_desc": "Soluções robustas sob medida em Next.js."
   },
   "work": {
-    "title": "Cases de Sucesso",
+    "title": "Casos de Sucesso",
     "subtitle": "Projetos que entregam valor real e performance extrema.",
     "production": "Em Produção",
     "preview": "Preview / Lançamento",
@@ -75,9 +75,27 @@
     "price_on_request": "Sob consulta",
     "popular": "Popular",
     "features": {
-      "lp": ["UI/UX Customizado", "Otimização de Conversão", "Design Responsivo (Mobile First)", "SEO Básico", "Integração com WhatsApp"],
-      "store": ["Catálogo Gerenciável", "Checkout WhatsApp Flow", "Páginas de Produto Rápidas", "Design Bilíngue Opcional", "Hospedagem de Alta Performance"],
-      "custom": ["Arquitetura sob medida", "Integração com APIs", "Painel Administrativo", "Segurança Bancária", "Escalabilidade Garantida"]
+      "lp": [
+        "UI/UX Customizado",
+        "Otimização de Conversão",
+        "Design Responsivo (Mobile First)",
+        "SEO Básico",
+        "Integração com WhatsApp"
+      ],
+      "store": [
+        "Catálogo Gerenciável",
+        "Checkout WhatsApp Flow",
+        "Páginas de Produto Rápidas",
+        "Design Bilíngue Opcional",
+        "Hospedagem de Alta Performance"
+      ],
+      "custom": [
+        "Arquitetura sob medida",
+        "Integração com APIs",
+        "Painel Administrativo",
+        "Segurança Bancária",
+        "Escalabilidade Garantida"
+      ]
     }
   },
   "cta": {

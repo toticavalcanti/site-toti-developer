@@ -2,11 +2,9 @@
 
 import { Case } from '@/types';
 import Image from 'next/image';
-import { ExternalLink, Tag as TagIcon, Github } from 'lucide-react';
-import { motion } from 'framer-motion';
-import Button from './Button';
-import Tag from './Tag';
+import { ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import TiltCard from './ui/TiltCard';
 
 interface ProjectCardProps {
   project: Case;
@@ -24,75 +22,79 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
   };
 
   const statusColors: Record<string, string> = {
-    production: 'bg-primary/20 text-primary border-primary/30',
-    preview: 'bg-amber-500/20 text-amber-500 border-amber-500/30',
-    functional: 'bg-emerald-500/20 text-emerald-500 border-emerald-500/30',
-    demo: 'bg-secondary/20 text-secondary border-secondary/30',
+    production: 'text-emerald-400',
+    preview: 'text-amber-400',
+    functional: 'text-blue-400',
+    demo: 'text-white/30',
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.8, ease: "easeOut" }}
-      viewport={{ once: true }}
-      className="group flex flex-col h-full bg-background-secondary rounded-[2.5rem] overflow-hidden border border-border hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5"
-    >
-      {/* Image Container */}
-      <div className="relative aspect-video overflow-hidden">
-        <Image
-          src={project.imagePath}
-          alt={project.name}
-          fill
-          className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background-secondary via-transparent to-transparent opacity-60" />
+    <TiltCard max={3} scale={1.02} className="h-full">
+      <div className="group relative flex flex-col h-full bg-[#0d0d0d] rounded-2xl overflow-hidden border border-white/[0.03] hover:border-primary/30 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]">
         
-        {/* Status Badge */}
-        <div className="absolute top-4 left-4">
-          <div className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border backdrop-blur-md ${statusColors[project.status]}`}>
-            {statusLabels[project.status]}
+        {/* Browser Top - Minimalist Dark */}
+        <div className="h-7 bg-white/[0.02] border-b border-white/[0.05] flex items-center px-4 gap-1.5 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
+           <div className="flex gap-1.5">
+            <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
+            <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
+            <div className="w-1.5 h-1.5 rounded-full bg-white/10" />
+          </div>
+          <div className="ml-auto text-[7px] font-bold uppercase tracking-[0.3em] text-white/10 italic">
+            {project.liveUrl?.replace('https://', '').replace('www.', '').split('/')[0]}
           </div>
         </div>
 
-        {/* Pillar Tag */}
-        <div className="absolute bottom-4 left-4">
-          <Tag variant="primary" size="sm" className="bg-primary/20 border-primary/30 text-primary backdrop-blur-md font-black uppercase">
-            {project.pillar.replace('-', ' ')}
-          </Tag>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="p-8 flex flex-col flex-grow">
-        <h3 className="text-2xl font-black mb-3 group-hover:text-primary transition-colors tracking-tight uppercase">
-          {project.name}
-        </h3>
-        <p className="text-foreground-secondary text-sm mb-6 line-clamp-3 leading-relaxed font-medium">
-          {project.description}
-        </p>
-
-        {/* Technologies / Stack */}
-        <div className="flex flex-wrap gap-2 mb-8 mt-auto">
-          {project.tags.slice(0, 3).map((tag) => (
-            <span key={tag} className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-background-tertiary border border-border text-[10px] uppercase tracking-widest font-bold text-foreground-muted">
-              <TagIcon size={10} />
-              {tag}
-            </span>
-          ))}
+        {/* Hero Image - Horizontal Aspect with Scroll on Hover */}
+        <div className="relative aspect-[16/11] overflow-hidden bg-[#111]">
+          <div className="absolute inset-0 transition-transform duration-[4000ms] ease-linear group-hover:-translate-y-1/2">
+            <Image
+              src={project.imagePath}
+              alt={project.name}
+              fill
+              className="object-cover object-top"
+              priority={index < 3}
+            />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+          
+          <div className="absolute top-4 right-4">
+            <div className={`px-3 py-1 rounded-full text-[7px] font-black uppercase tracking-[0.25em] border border-current backdrop-blur-3xl shadow-2xl ${statusColors[project.status]}`}>
+              {statusLabels[project.status]}
+            </div>
+          </div>
         </div>
 
-        {/* Link Actions */}
-        <div className="flex items-center gap-3">
-          {project.liveUrl && (
-            <Button size="sm" asChild className="flex-1 font-black shadow-xl shadow-primary/10 h-12">
-              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                <ExternalLink size={18} className="mr-2" /> {project.ctaText || 'Live'}
+        {/* Content Body - Editorial & Compact */}
+        <div className="p-8 pb-10 flex flex-col flex-grow bg-gradient-to-b from-transparent to-black/40">
+          <div className="flex flex-wrap gap-3 mb-6">
+            {project.tags.slice(0, 2).map((tag) => (
+              <span key={tag} className="text-[8px] font-black uppercase tracking-[0.2em] text-white/20">
+                // {tag}
+              </span>
+            ))}
+          </div>
+
+          <h3 className="text-3xl font-light tracking-tighter text-white/90 group-hover:text-white transition-colors duration-500 mb-6">
+            {project.name}
+          </h3>
+
+          {/* Action Link - Pure High-End interaction */}
+          <div className="mt-auto">
+            {project.liveUrl && (
+              <a 
+                href={project.liveUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="group/link inline-flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.3em] text-primary hover:text-white transition-all duration-500"
+              >
+                <span>VER PROJETO</span>
+                <div className="w-8 h-[1px] bg-primary/30 group-hover/link:w-16 group-hover/link:bg-white transition-all duration-500" />
+                <ArrowRight size={14} className="-translate-x-2 group-hover/link:translate-x-0 transition-transform duration-500" />
               </a>
-            </Button>
-          )}
+            )}
+          </div>
         </div>
       </div>
-    </motion.div>
+    </TiltCard>
   );
 }
