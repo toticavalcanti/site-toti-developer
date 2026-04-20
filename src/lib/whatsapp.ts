@@ -43,21 +43,21 @@ function buildPt(p: QualificationPayload): string {
   };
 
   const lines = [
-    locale === 'pt' ? `Olá Toti, vim pelo site.` : `Hi Toti, I came from your website.`,
-    p.name ? (locale === 'pt' ? `Meu nome é ${p.name}.` : `My name is ${p.name}.`) : null,
+    `Olá Toti, vim pelo site.`,
+    p.name ? `Meu nome é ${p.name}.` : null,
   ];
 
   if (p.projectType && p.projectType !== 'not_sure') {
-    lines.push(locale === 'pt' ? `Tipo de projeto: ${projectMap[p.projectType] ?? p.projectType}` : `Project type: ${projectMap[p.projectType] ?? p.projectType}`);
+    lines.push(`Tipo de projeto: ${projectMap[p.projectType] ?? p.projectType}`);
   }
   if (p.budget && p.budget !== 'undefined') {
-    lines.push(locale === 'pt' ? `Orçamento: ${budgetMap[p.budget] ?? p.budget}` : `Budget: ${budgetMap[p.budget] ?? p.budget}`);
+    lines.push(`Orçamento: ${budgetMap[p.budget] ?? p.budget}`);
   }
   if (p.timeline && p.timeline !== 'no_rush') {
-    lines.push(locale === 'pt' ? `Prazo: ${timelineMap[p.timeline] ?? p.timeline}` : `Timeline: ${timelineMap[p.timeline] ?? p.timeline}`);
+    lines.push(`Prazo: ${timelineMap[p.timeline] ?? p.timeline}`);
   }
   if (p.message) {
-    lines.push(locale === 'pt' ? `\nResumo: ${p.message}` : `\nSummary: ${p.message}`);
+    lines.push(`\nResumo: ${p.message}`);
   }
 
   return lines.filter(Boolean).join('\n');
