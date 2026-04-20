@@ -17,6 +17,8 @@ export function buildWhatsappUrl(
   const text = locale === 'en'
     ? buildEn(payload)
     : buildPt(payload);
+  
+  if (!text) return `https://wa.me/${digits}`;
   return `https://wa.me/${digits}?text=${encodeURIComponent(text)}`;
 }
 
@@ -42,11 +44,11 @@ function buildPt(p: QualificationPayload): string {
     no_rush: 'Sem pressa',
   };
 
-  const lines = [
-    `Olá Toti, vim pelo site.`,
-    p.name ? `Meu nome é ${p.name}.` : null,
-  ];
+  const lines: (string | null)[] = [];
 
+  if (p.name) {
+    lines.push(`Meu nome é ${p.name}.`);
+  }
   if (p.projectType && p.projectType !== 'not_sure') {
     lines.push(`Tipo de projeto: ${projectMap[p.projectType] ?? p.projectType}`);
   }
@@ -60,7 +62,10 @@ function buildPt(p: QualificationPayload): string {
     lines.push(`\nResumo: ${p.message}`);
   }
 
-  return lines.filter(Boolean).join('\n');
+  const content = lines.filter(Boolean).join('\n');
+  if (!content) return '';
+
+  return `Olá Toti, vim pelo site.\n${content}`;
 }
 
 function buildEn(p: QualificationPayload): string {
@@ -88,11 +93,11 @@ function buildEn(p: QualificationPayload): string {
   // Consolidated into buildPt logic with locale check for simplicity or keep separate
   // Actually I just updated it above for both in a merged way for the PT part but wait, 
   // let me fix the buildEn specifically to match.
-  const lines = [
-    `Hi Toti, I came from your website.`,
-    p.name ? `My name is ${p.name}.` : null,
-  ];
+  const lines: (string | null)[] = [];
 
+  if (p.name) {
+    lines.push(`My name is ${p.name}.`);
+  }
   if (p.projectType && p.projectType !== 'not_sure') {
     lines.push(`Project type: ${projectMap[p.projectType] ?? p.projectType}`);
   }
@@ -106,5 +111,8 @@ function buildEn(p: QualificationPayload): string {
     lines.push(`\nSummary: ${p.message}`);
   }
 
-  return lines.filter(Boolean).join('\n');
+  const content = lines.filter(Boolean).join('\n');
+  if (!content) return '';
+
+  return `Hi Toti, I came from your website.\n${content}`;
 }
