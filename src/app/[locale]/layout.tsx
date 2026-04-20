@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Space_Grotesk, Inter } from 'next/font/google';
 import './globals.css';
 import { NextIntlClientProvider } from 'next-intl';
@@ -55,6 +56,18 @@ export default async function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${inter.variable} antialiased selection:bg-foreground selection:text-background`}
       >
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+          `}
+        </Script>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <QualificationProvider>
             <div className="relative min-h-screen flex flex-col">
