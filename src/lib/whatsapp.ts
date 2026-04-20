@@ -42,14 +42,25 @@ function buildPt(p: QualificationPayload): string {
     no_rush: 'Sem pressa',
   };
 
-  return [
-    `Olá Toti, vim pelo site.`,
-    p.name ? `Meu nome é ${p.name}.` : null,
-    `Tipo de projeto: ${projectMap[p.projectType] ?? p.projectType}`,
-    `Orçamento: ${budgetMap[p.budget] ?? p.budget}`,
-    `Prazo: ${timelineMap[p.timeline] ?? p.timeline}`,
-    p.message ? `\nResumo: ${p.message}` : null,
-  ].filter(Boolean).join('\n');
+  const lines = [
+    locale === 'pt' ? `Olá Toti, vim pelo site.` : `Hi Toti, I came from your website.`,
+    p.name ? (locale === 'pt' ? `Meu nome é ${p.name}.` : `My name is ${p.name}.`) : null,
+  ];
+
+  if (p.projectType && p.projectType !== 'not_sure') {
+    lines.push(locale === 'pt' ? `Tipo de projeto: ${projectMap[p.projectType] ?? p.projectType}` : `Project type: ${projectMap[p.projectType] ?? p.projectType}`);
+  }
+  if (p.budget && p.budget !== 'undefined') {
+    lines.push(locale === 'pt' ? `Orçamento: ${budgetMap[p.budget] ?? p.budget}` : `Budget: ${budgetMap[p.budget] ?? p.budget}`);
+  }
+  if (p.timeline && p.timeline !== 'no_rush') {
+    lines.push(locale === 'pt' ? `Prazo: ${timelineMap[p.timeline] ?? p.timeline}` : `Timeline: ${timelineMap[p.timeline] ?? p.timeline}`);
+  }
+  if (p.message) {
+    lines.push(locale === 'pt' ? `\nResumo: ${p.message}` : `\nSummary: ${p.message}`);
+  }
+
+  return lines.filter(Boolean).join('\n');
 }
 
 function buildEn(p: QualificationPayload): string {
@@ -74,12 +85,26 @@ function buildEn(p: QualificationPayload): string {
     no_rush: 'No rush',
   };
 
-  return [
+  // Consolidated into buildPt logic with locale check for simplicity or keep separate
+  // Actually I just updated it above for both in a merged way for the PT part but wait, 
+  // let me fix the buildEn specifically to match.
+  const lines = [
     `Hi Toti, I came from your website.`,
     p.name ? `My name is ${p.name}.` : null,
-    `Project type: ${projectMap[p.projectType] ?? p.projectType}`,
-    `Budget: ${budgetMap[p.budget] ?? p.budget}`,
-    `Timeline: ${timelineMap[p.timeline] ?? p.timeline}`,
-    p.message ? `\nSummary: ${p.message}` : null,
-  ].filter(Boolean).join('\n');
+  ];
+
+  if (p.projectType && p.projectType !== 'not_sure') {
+    lines.push(`Project type: ${projectMap[p.projectType] ?? p.projectType}`);
+  }
+  if (p.budget && p.budget !== 'undefined') {
+    lines.push(`Budget: ${budgetMap[p.budget] ?? p.budget}`);
+  }
+  if (p.timeline && p.timeline !== 'no_rush') {
+    lines.push(`Timeline: ${timelineMap[p.timeline] ?? p.timeline}`);
+  }
+  if (p.message) {
+    lines.push(`\nSummary: ${p.message}`);
+  }
+
+  return lines.filter(Boolean).join('\n');
 }
