@@ -27,9 +27,9 @@ export default function QualificationModal() {
   
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    projectType: '',
-    budget: '',
-    timeline: '',
+    projectType: 'not_sure',
+    budget: 'undefined',
+    timeline: 'no_rush',
     name: '',
     email: '',
     message: ''
@@ -44,7 +44,9 @@ export default function QualificationModal() {
     if (isOpen) {
       setFormData(prev => ({
         ...prev,
-        projectType: defaultProjectType || '',
+        projectType: defaultProjectType || 'not_sure',
+        budget: 'undefined',
+        timeline: 'no_rush'
       }));
       setStep(1);
       setIsSuccess(false);
@@ -126,14 +128,13 @@ export default function QualificationModal() {
   };
 
   const handleWhatsAppClick = async () => {
-    if (!isQualificationComplete) return;
-    
+    // Collect whatever data we have
     await handlePartialSave('whatsapp_handoff');
     
     const url = buildWhatsappUrl(aboutInfo.whatsapp, locale, {
-      projectType: formData.projectType,
-      budget: formData.budget,
-      timeline: formData.timeline,
+      projectType: formData.projectType || 'not_sure',
+      budget: formData.budget || 'undefined',
+      timeline: formData.timeline || 'no_rush',
       name: formData.name,
       message: formData.message
     });
@@ -149,30 +150,21 @@ export default function QualificationModal() {
     close();
   };
 
-  const projectOptions = [
-    { value: '', label: t('project_not_sure') },
-    ...Object.entries(projectTypeLabels).map(([val, key]) => ({
-      value: val,
-      label: t(key)
-    }))
-  ];
+  const projectOptions = Object.entries(projectTypeLabels).map(([val, key]) => ({
+    value: val,
+    label: t(key)
+  }));
 
   const budgetOptionsMap = locale === 'pt' ? budgetBrlLabels : budgetUsdLabels;
-  const budgetOptions = [
-    { value: '', label: t('budget_undefined') },
-    ...Object.entries(budgetOptionsMap).map(([val, key]) => ({
-      value: val,
-      label: t(key)
-    }))
-  ];
+  const budgetOptions = Object.entries(budgetOptionsMap).map(([val, key]) => ({
+    value: val,
+    label: t(key)
+  }));
 
-  const timelineOptions = [
-    { value: '', label: t('timeline_no_rush') },
-    ...Object.entries(timelineLabels).map(([val, key]) => ({
-      value: val,
-      label: t(key)
-    }))
-  ];
+  const timelineOptions = Object.entries(timelineLabels).map(([val, key]) => ({
+    value: val,
+    label: t(key)
+  }));
 
   if (!isOpen) return null;
 
@@ -310,9 +302,8 @@ export default function QualificationModal() {
                 
                 <AnimatedButton
                   onClick={handleWhatsAppClick}
-                  disabled={!isQualificationComplete}
                   variant="outline"
-                  className="flex-1 border-emerald-500/30 text-emerald-500 hover:bg-emerald-500/5"
+                  className="flex-1 border-emerald-500/30 text-emerald-500 hover:bg-emerald-500/5 transition-all duration-300"
                 >
                   <MessageCircle size={18} /> {t('submit_whatsapp')}
                 </AnimatedButton>
