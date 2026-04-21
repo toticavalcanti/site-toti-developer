@@ -2,6 +2,14 @@
 
 export type LeadStatus =
     | 'new'
+    | 'contacted'
+    | 'qualified'
+    | 'proposal_sent'
+    | 'negotiating'
+    | 'won'
+    | 'lost'
+    | 'nurturing'
+    // Legacy/Bot statuses
     | 'qualifying'
     | 'meeting_suggested'
     | 'meeting_scheduled'
@@ -27,6 +35,13 @@ export interface LeadData {
     last_user_text_norm?: string | null;
     last_agent_reply?: string | null;
     last_agent_reply_at?: Date | null;
+
+    // CRM Fields
+    score?: number | null;
+    tags?: string[] | null;
+    next_action_at?: Date | null;
+    next_action_note?: string | null;
+    lost_reason?: string | null;
 
     created_at?: Date;
     updated_at?: Date;
