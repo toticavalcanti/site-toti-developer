@@ -35,27 +35,33 @@ export default function ContactForm() {
   const budgetLabels = locale === 'pt' ? budgetBrlLabels : budgetUsdLabels;
 
   const projectOptions = [
-    { value: '', label: tq('project_not_sure') },
-    ...Object.entries(projectTypeLabels).map(([val, key]) => ({
-      value: val,
-      label: tq(key)
-    }))
+    { value: 'not_sure', label: tq('project_not_sure') },
+    ...Object.entries(projectTypeLabels)
+      .filter(([val]) => val !== 'not_sure')
+      .map(([val, key]) => ({
+        value: val,
+        label: tq(key)
+      }))
   ];
 
   const budgetOptions = [
-    { value: '', label: tq('budget_undefined') },
-    ...Object.entries(budgetLabels).map(([val, key]) => ({
-      value: val,
-      label: tq(key)
-    }))
+    { value: 'undefined', label: tq('budget_undefined') },
+    ...Object.entries(budgetLabels)
+      .filter(([val]) => val !== 'undefined')
+      .map(([val, key]) => ({
+        value: val,
+        label: tq(key)
+      }))
   ];
 
   const timelineOptions = [
-    { value: '', label: tq('timeline_no_rush') },
-    ...Object.entries(timelineLabels).map(([val, key]) => ({
-      value: val,
-      label: tq(key)
-    }))
+    { value: 'no_rush', label: tq('timeline_no_rush') },
+    ...Object.entries(timelineLabels)
+      .filter(([val]) => val !== 'no_rush')
+      .map(([val, key]) => ({
+        value: val,
+        label: tq(key)
+      }))
   ];
 
   const {
@@ -69,7 +75,10 @@ export default function ContactForm() {
     defaultValues: {
       locale: locale,
       source: 'contact_page',
-      stage: 'submitted'
+      stage: 'submitted',
+      projectType: 'not_sure',
+      budget: 'undefined',
+      timeline: 'no_rush'
     }
   });
 
