@@ -51,7 +51,7 @@ export async function sendLeadNotification(data: LeadNotificationData) {
     // ainda está em verificação no Resend. Trocar para:
     // 'Site Toti <noreply@toticavalcanti.com.br>'
     // assim que o status do domínio no Resend → Domains mostrar "Verified".
-    from: 'Site Toti <onboarding@resend.dev>',
+    from: 'Site Toti <noreply@toticavalcanti.com.br>',
     to: ['toticavalcanti@gmail.com', 'toticavalcanti@hotmail.com'],
     subject: `Novo lead: ${data.name} — ${project}`,
     html: `
