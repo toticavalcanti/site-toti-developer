@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { qualificationSubmittedSchema } from '@/lib/qualification-schema';
 import { upsertLead } from '@/lib/leads';
+import { sendLeadNotification } from '@/lib/email';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -68,6 +69,24 @@ export async function POST(request: NextRequest) {
             notes: data.message ? `[Formulário Site] ${data.message}` : null,
             status: 'new'
         });
+        
+        // Notification for the owner (fire-and-forget)
+        try {
+            await sendLeadNotification({
+                name: data.name,
+                email: data.email,
+                whatsapp: data.whatsapp,
+                projectType: data.projectType,
+                budget: data.budget,
+                timeline: data.timeline,
+                message: data.message,
+                source: data.source || 'contact_form',
+                locale: data.locale,
+            });
+        } catch (emailError) {
+            // Fire and forget - don't break the flow
+            console.error('[Email Notification] Failed to send:', emailError);
+        }
 
         return NextResponse.json({
             success: true,

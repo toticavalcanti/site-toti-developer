@@ -4,6 +4,7 @@ import {
   qualificationPartialSchema 
 } from '@/lib/qualification-schema';
 import { upsertLead } from '@/lib/leads';
+import { sendLeadNotification } from '@/lib/email';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -45,6 +46,26 @@ export async function POST(request: NextRequest) {
       notes: validatedData.message ? `[Qualification Funnel] ${validatedData.message}` : null,
       status: 'new'
     });
+    
+    // Notification for the owner (fire-and-forget)
+    if (stage === 'submitted') {
+      try {
+        await sendLeadNotification({
+          name: validatedData.name,
+          email: validatedData.email,
+          whatsapp: validatedData.whatsapp,
+          projectType: validatedData.projectType,
+          budget: validatedData.budget,
+          timeline: validatedData.timeline,
+          message: validatedData.message,
+          source: validatedData.source,
+          locale: validatedData.locale,
+        });
+      } catch (emailError) {
+        // Fire and forget - don't break the flow
+        console.error('[Email Notification] Failed to send:', emailError);
+      }
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
