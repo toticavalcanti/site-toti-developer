@@ -49,7 +49,8 @@ export const config = {
   // Match all pathnames except for
   // - /api (API routes)
   // - /_next (Next.js internals)
+  // - /assets (Static assets)
   // - /_static (inside /public)
-  // - all root files inside /public (e.g. /favicon.ico)
-  matcher: ['/((?!api|_next|_static|_vercel|[\\w-]+\\.\\w+).*)'],
+  // - all files with extensions (e.g. .jpg, .png, etc.)
+  matcher: ['/((?!api|_next|assets|_static|_vercel|.*\\..*).*)'],
 };
