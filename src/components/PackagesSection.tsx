@@ -135,7 +135,7 @@ export default function PackagesSection() {
                   <div onClick={() => open('audit', 'package_audit_express')} className="w-full cursor-pointer">
                     <AnimatedButton variant="primary" className="w-full h-14 text-base">
                       <MessageCircle size={20} />
-                      {locale === 'pt' ? 'Solicitar auditoria' : 'Request audit'}
+                      {t('audit_express_cta')}
                     </AnimatedButton>
                   </div>
                 </div>

@@ -81,7 +81,8 @@
     "popular": "Popular",
     "audit_express_title": "Auditoria Express",
     "audit_express_badge": "Oferta de Entrada",
-    "audit_express_desc": "Ideal para quem já tem site ou landing page, mas sente que poucos visitantes viram contato ou venda. Um diagnóstico objetivo para identificar onde sua página está perdendo oportunidades.",
+    "audit_express_desc": "Ideal para quem já tem site, landing page ou página de produto, mas sente que poucos visitantes chamam no WhatsApp, pedem orçamento, agendam ou compram. Um diagnóstico objetivo para identificar onde sua página está perdendo oportunidades e o que corrigir primeiro.",
+    "audit_express_cta": "Solicitar auditoria",
     "audit_express_features": [
       "Análise de 1 página principal",
       "Revisão de Mobile & UX",
