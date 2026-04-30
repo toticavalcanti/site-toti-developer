@@ -110,6 +110,46 @@ export default function ServicosPage() {
       />
 
       <div className="py-20 space-y-24">
+        {/* Diagnostic Callout */}
+        <section id="auditoria" className="scroll-mt-32">
+          <Container>
+            <div className="relative overflow-hidden rounded-[2rem] border border-primary/20 bg-background-secondary/30 backdrop-blur-sm p-10 sm:p-16 text-center group transition-all duration-700 hover:border-primary/40 shadow-2xl">
+               <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+               
+               <div className="relative max-w-3xl mx-auto">
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-black uppercase tracking-[0.2em] mb-8">
+                    <Shield size={16} className="fill-primary" />
+                    {locale === 'pt' ? 'Diagnóstico Inicial' : 'Initial Diagnosis'}
+                  </div>
+                  
+                  <h2 className="text-4xl sm:text-5xl font-black mb-8 tracking-tight">
+                    {t('services.audit_callout_title')}
+                  </h2>
+                  
+                  <p className="text-foreground-secondary text-lg sm:text-xl leading-relaxed mb-12">
+                    {t('services.audit_callout_desc')}
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                    <Button 
+                      size="lg" 
+                      className="px-10 h-16 text-base"
+                      onClick={() => open('audit', 'services_diagnostic_banner')}
+                    >
+                      <Zap size={20} className="mr-3 fill-white" />
+                      {t('services.audit_cta')}
+                    </Button>
+                    
+                    <div className="flex flex-col items-start text-left">
+                       <span className="text-primary font-bold text-lg">A partir de R$ 197</span>
+                       <span className="text-foreground-muted text-sm tracking-wide font-medium uppercase">{locale === 'pt' ? 'Entrega em 2-3 dias' : '2-3 days delivery'}</span>
+                    </div>
+                  </div>
+               </div>
+            </div>
+          </Container>
+        </section>
+
         {pillars.map((pillar, index) => (
           <section key={pillar.id} id={pillar.id} className="scroll-mt-32">
             <Container>

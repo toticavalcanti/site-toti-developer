@@ -1,6 +1,6 @@
 export type Locale = 'pt' | 'en';
 
-export type PackageId = 'landing' | 'ecommerce' | 'automation' | 'custom';
+export type PackageId = 'landing' | 'ecommerce' | 'automation' | 'custom' | 'audit';
 
 export type PackagePricing = {
   id: PackageId;
@@ -57,6 +57,17 @@ export const packagePricing: Record<PackageId, PackagePricing> = {
     timeline: {
       pt: 'Prazo conforme escopo',
       en: 'Timeline based on scope',
+    },
+  },
+  audit: {
+    id: 'audit',
+    priceFrom: {
+      pt: 'A partir de R$ 197',
+      en: 'Starting at $49',
+    },
+    timeline: {
+      pt: 'Entrega em 2 a 3 dias úteis',
+      en: 'Delivered in 2–3 business days',
     },
   },
 };

@@ -5,6 +5,7 @@ export const projectTypeLabels: Record<ProjectType, string> = {
   ecommerce: 'project_ecommerce',
   automation: 'project_automation',
   custom: 'project_custom',
+  audit: 'project_audit',
   not_sure: 'project_not_sure',
 };
 

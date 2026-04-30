@@ -30,7 +30,10 @@
     "automation_title": "Automação & IA",
     "automation_desc": "Agentes inteligentes qualificando leads 24/7.",
     "custom_title": "Sistemas Custom",
-    "custom_desc": "Soluções robustas sob medida em Next.js."
+    "custom_desc": "Soluções robustas sob medida em Next.js.",
+    "audit_callout_title": "Não sabe se precisa refazer o site inteiro?",
+    "audit_callout_desc": "Comece pela Auditoria de Vazamento de Clientes. Eu identifico onde sua página atual está perdendo contatos, orçamentos ou vendas — e mostro o que corrigir primeiro.",
+    "audit_cta": "Solicitar auditoria"
   },
   "work": {
     "title": "Casos de Sucesso",
@@ -76,6 +79,16 @@
     "automation_desc": "Agentes de IA avançados para vendas e qualificação.",
     "price_on_request": "Sob consulta",
     "popular": "Popular",
+    "audit_express_title": "Auditoria Express",
+    "audit_express_badge": "Oferta de Entrada",
+    "audit_express_desc": "Ideal para quem já tem site ou landing page, mas sente que poucos visitantes viram contato ou venda. Um diagnóstico objetivo para identificar onde sua página está perdendo oportunidades.",
+    "audit_express_features": [
+      "Análise de 1 página principal",
+      "Revisão de Mobile & UX",
+      "Diagnóstico de CTAs e WhatsApp",
+      "Pontos de fricção no funil",
+      "Lista de correções prioritárias"
+    ],
     "features": {
       "lp": [
         "UI/UX Customizado",
@@ -157,6 +170,7 @@
     "project_automation": "Automação com IA",
     "project_custom": "Sistema sob medida",
     "project_not_sure": "Ainda não sei",
+    "project_audit": "Auditoria de Vazamento de Clientes",
     "budget_under_3k": "Até R$ 3.000",
     "budget_3k_10k": "R$ 3.000 a R$ 10.000",
     "budget_10k_30k": "R$ 10.000 a R$ 30.000",

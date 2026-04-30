@@ -30,7 +30,10 @@
     "automation_title": "Automation & AI",
     "automation_desc": "Smart agents qualifying leads 24/7.",
     "custom_title": "Custom Systems",
-    "custom_desc": "Robust bespoke solutions in Next.js."
+    "custom_desc": "Robust bespoke solutions in Next.js.",
+    "audit_callout_title": "Not sure if you need to redo the entire site?",
+    "audit_callout_desc": "Start with a Client Leak Audit. I identify where your current page is losing contacts, quotes, or sales — and show you what to fix first.",
+    "audit_cta": "Request audit"
   },
   "work": {
     "title": "Success Stories",
@@ -76,6 +79,16 @@
     "automation_desc": "Advanced AI agents for sales and qualification.",
     "price_on_request": "On request",
     "popular": "Popular",
+    "audit_express_title": "Express Audit",
+    "audit_express_badge": "Entry Offer",
+    "audit_express_desc": "Ideal for those who already have a site or landing page, but feel that few visitors turn into contacts or sales. An objective diagnosis to identify where your page is losing opportunities.",
+    "audit_express_features": [
+      "Analysis of 1 main page",
+      "Mobile & UX Review",
+      "CTA & WhatsApp Diagnosis",
+      "Funnel friction points",
+      "Prioritized fix list"
+    ],
     "features": {
       "lp": [
         "Custom UI/UX",
@@ -157,6 +170,7 @@
     "project_automation": "AI Automation",
     "project_custom": "Custom System",
     "project_not_sure": "Not sure yet",
+    "project_audit": "Client Leak Audit",
     "budget_under_1k": "Under $1,000",
     "budget_1k_3k": "$1,000 – $3,000",
     "budget_3k_10k": "$3,000 – $10,000",

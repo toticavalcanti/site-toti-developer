@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const projectTypeEnum = z.enum(['landing', 'ecommerce', 'automation', 'custom', 'not_sure']);
+export const projectTypeEnum = z.enum(['landing', 'ecommerce', 'automation', 'custom', 'audit', 'not_sure']);
 export const timelineEnum = z.enum(['asap', '1_month', '2_3_months', 'no_rush']);
 export const budgetBrlEnum = z.enum(['under_3k', '3k_10k', '10k_30k', '30k_plus', 'undefined']);
 export const budgetUsdEnum = z.enum(['under_1k', '1k_3k', '3k_10k', '10k_plus', 'undefined']);

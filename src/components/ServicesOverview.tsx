@@ -2,14 +2,15 @@
 
 import Container from './Container';
 import SectionTitle from './SectionTitle';
-import { Layout, ShoppingCart, MessageSquare, Code2, ArrowRight } from 'lucide-react';
+import { Layout, ShoppingCart, MessageSquare, Code2, ArrowRight, Zap } from 'lucide-react';
 import { Link } from '@/i18n/routing';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import SpotlightCard from './ui/SpotlightCard';
 import ScrollReveal from './ui/ScrollReveal';
 
 export default function ServicesOverview() {
   const t = useTranslations('services');
+  const locale = useLocale();
 
   const services = [
     {
@@ -59,6 +60,38 @@ export default function ServicesOverview() {
           centered
           className="mx-auto"
         />
+
+        {/* Diagnostic Callout Banner */}
+        <ScrollReveal delay={0.2} className="mt-12">
+          <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-background-secondary/40 backdrop-blur-md p-8 sm:p-10 group transition-all duration-500 hover:border-primary/40 shadow-2xl shadow-primary/5">
+            <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+            
+            <div className="relative flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+              <div className="flex-1">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest mb-4">
+                  <Zap size={12} className="fill-primary" />
+                  {locale === 'pt' ? 'Diagnóstico Inicial' : 'Initial Diagnosis'}
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-bold mb-4 tracking-tight">
+                  {t('audit_callout_title')}
+                </h3>
+                <p className="text-foreground-secondary text-base leading-relaxed max-w-2xl">
+                  {t('audit_callout_desc')}
+                </p>
+              </div>
+              
+              <div className="flex-shrink-0">
+                <Link 
+                  href="/services#auditoria" 
+                  className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-primary text-white font-bold text-sm tracking-wide hover:bg-primary-light transition-all duration-300 shadow-xl shadow-primary/20 group/btn"
+                >
+                  {t('audit_cta')}
+                  <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
           {services.map((service, index) => (

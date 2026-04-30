@@ -166,6 +166,15 @@ export const services: Service[] = [
     featured: true,
     description: 'Soluções sob medida que não cabem em templates prontos. Performance extrema e arquitetura limpa sem bloatware.',
     technologies: ['Next.js', 'Typescript', 'Supabase/MongoDB']
+  },
+  {
+    id: '5',
+    title: 'Auditoria de Vazamento de Clientes',
+    icon: 'Search',
+    category: 'software',
+    featured: true,
+    description: 'Diagnóstico rápido para identificar onde seu site, landing page ou página de produto está perdendo contatos, orçamentos e vendas.',
+    technologies: ['Conversion Audit', 'Mobile UX', 'Speed Analysis']
   }
 ];
 

@@ -424,6 +424,37 @@
                 "Já tem presença digital? (site, redes sociais)",
                 "Qual o orçamento disponível para investir?"
             ]
+        },
+        {
+            "id": "auditoria-vazamento",
+            "name": "Auditoria de Vazamento de Clientes",
+            "category": "software",
+            "short_description": "Diagnóstico objetivo para identificar onde sua página está perdendo clientes e o que corrigir primeiro",
+            "pricing": {
+                "model": "por diagnóstico",
+                "ranges": [
+                    {
+                        "name": "Auditoria Express",
+                        "price": "A partir de R$ 197",
+                        "description": "Análise de 1 página principal, revisão de Mobile & UX, diagnóstico de CTAs e WhatsApp"
+                    }
+                ]
+            },
+            "timeline": "2-3 dias úteis",
+            "includes": [
+                "Análise de 1 página principal",
+                "Revisão de Mobile & UX",
+                "Diagnóstico de WhatsApp, CTAs ou formulário",
+                "Clareza da oferta",
+                "Pontos de fricção que fazem o visitante desistir",
+                "Lista de correções prioritárias"
+            ],
+            "essential_questions": [
+                "Qual a URL da página que você quer analisar?",
+                "Qual o seu principal objetivo com essa página?",
+                "Você já roda tráfego pago para ela?"
+            ],
+            "note": "É um diagnóstico inicial. Se fizer sentido, podemos implementar as correções depois."
         }
     ],
     "packages": [

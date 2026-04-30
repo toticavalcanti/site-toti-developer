@@ -86,6 +86,64 @@ export default function PackagesSection() {
           centered
         />
 
+        {/* Auditoria Express - Entry Offer Block */}
+        <ScrollReveal delay={0.1} className="mt-16 mb-12">
+          <div className="relative overflow-hidden rounded-[2.5rem] border-2 border-primary/30 bg-background-secondary p-8 sm:p-12 shadow-2xl shadow-primary/10">
+            <div className="absolute top-0 right-0 px-6 py-2 rounded-bl-3xl bg-primary text-white text-xs font-black uppercase tracking-widest shadow-lg">
+              {t('audit_express_badge')}
+            </div>
+            
+            <div className="relative flex flex-col xl:flex-row gap-12 items-center">
+              <div className="flex-1 text-center xl:text-left">
+                <div className="inline-flex items-center justify-center xl:justify-start gap-4 mb-6 text-primary">
+                  <div className="p-4 rounded-2xl bg-primary/10 shadow-inner">
+                    <Shield size={32} className="fill-primary/20" />
+                  </div>
+                  <h3 className="text-4xl sm:text-5xl font-black tracking-tight text-white">{t('audit_express_title')}</h3>
+                </div>
+                
+                <p className="text-foreground-secondary text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl mx-auto xl:mx-0">
+                  {t('audit_express_desc')}
+                </p>
+                
+                <div className="flex flex-wrap justify-center xl:justify-start gap-x-8 gap-y-4 mb-10">
+                  <div className="flex items-center gap-3">
+                    <Zap size={20} className="text-primary fill-primary/20" />
+                    <span className="font-bold text-xl text-primary">{locale === 'pt' ? 'A partir de R$ 197' : 'Starting at $49'}</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Shield size={20} className="text-foreground-muted" />
+                    <span className="font-medium text-foreground-secondary uppercase tracking-wider text-sm">{locale === 'pt' ? '2 a 3 dias úteis' : '2-3 business days'}</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="w-full xl:w-auto flex-shrink-0">
+                <div className="bg-background-tertiary/50 backdrop-blur-md rounded-3xl p-8 border border-white/5 shadow-2xl min-w-[320px]">
+                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-foreground-muted mb-6 text-center">
+                    {locale === 'pt' ? 'O que você recebe' : 'What you get'}
+                  </p>
+                  <ul className="space-y-4 mb-8">
+                    {(t.raw('audit_express_features') as string[]).map((feature, i) => (
+                      <li key={i} className="flex gap-4 items-start text-sm text-foreground-secondary">
+                        <Check size={18} className="text-primary mt-0.5 flex-shrink-0" />
+                        <span className="font-medium leading-snug">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <div onClick={() => open('audit', 'package_audit_express')} className="w-full cursor-pointer">
+                    <AnimatedButton variant="primary" className="w-full h-14 text-base">
+                      <MessageCircle size={20} />
+                      {locale === 'pt' ? 'Solicitar auditoria' : 'Request audit'}
+                    </AnimatedButton>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
           {allPackages.map((pkg, index) => {
             const pricing = packagePricing[pkg.id as keyof typeof packagePricing];
